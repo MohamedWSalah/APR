@@ -1,12 +1,22 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { TextField, MenuItem } from "@material-ui/core";
-
+import { Button } from "@material-ui/core";
+import DropDownMenu from "./DropDownMenu";
+import Tabs from "./Tabs";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
-      margin: theme.spacing(1),
+      margin: theme.spacing(2),
       width: "25ch",
+    },
+  },
+  ShowButton: {
+    backgroundColor: "#AF0000",
+    color: "white",
+    marginTop: "2vw",
+    width: "25ch",
+    "&:hover": {
+      backgroundColor: "#c23636",
     },
   },
 }));
@@ -22,66 +32,74 @@ function Body() {
   const programTitles = ["Example 1", "Example 2", "Example 3"];
   const year = ["16", "17", "18"];
 
-  const [faculty, setFaculty] = useState("");
-  const [programTitle, setprogramTitle] = useState("");
-  const [AYStartEnd, setAYStartEnd] = useState({ start: "", end: "" });
+  const [requiredInfo, setRequiredInfo] = useState({
+    faculty: "",
+    programTitle: "",
+    AYStart: "",
+    AYEnd: "",
+  });
   return (
     <div className={classes.root} style={{ marginTop: "1vw" }}>
-      <TextField
-        select
+      <DropDownMenu
+        autofocus={true}
         label="Faculty"
-        value={faculty}
-        onChange={(event) => setFaculty(event.target.value)}
-      >
-        {faculties.map((faculty) => (
-          <MenuItem key={faculty} value={faculty}>
-            {faculty}
-          </MenuItem>
-        ))}
-      </TextField>
+        value={requiredInfo.faculty}
+        arrayMenu={faculties}
+        onChange={(event) =>
+          setRequiredInfo({ ...requiredInfo, faculty: event.target.value })
+        }
+      />
 
-      <TextField
-        select
-        label="Program title"
-        value={programTitle}
-        onChange={(event) => setprogramTitle(event.target.value)}
-      >
-        {programTitles.map((programTitle) => (
-          <MenuItem key={programTitle} value={programTitle}>
-            {programTitle}
-          </MenuItem>
-        ))}
-      </TextField>
+      <DropDownMenu
+        label="Program Title"
+        value={requiredInfo.programTitle}
+        arrayMenu={programTitles}
+        disabled={requiredInfo.faculty ? false : true}
+        onChange={(event) =>
+          setRequiredInfo({
+            ...requiredInfo,
+            programTitle: event.target.value,
+          })
+        }
+      />
 
-      <TextField
-        select
+      <DropDownMenu
         label="Academic Year Start"
-        value={AYStartEnd.start}
+        value={requiredInfo.AYStart}
+        arrayMenu={year}
+        disabled={requiredInfo.faculty ? false : true}
         onChange={(event) =>
-          setAYStartEnd({ ...AYStartEnd, start: event.target.value })
+          setRequiredInfo({
+            ...requiredInfo,
+            AYStart: event.target.value,
+          })
         }
-      >
-        {year.map((year) => (
-          <MenuItem key={year} value={year}>
-            {year}
-          </MenuItem>
-        ))}
-      </TextField>
+      />
 
-      <TextField
-        select
-        label="Program title"
-        value={AYStartEnd.end}
+      <DropDownMenu
+        label="Academic Year End"
+        value={requiredInfo.AYEnd}
+        arrayMenu={year}
+        disabled={requiredInfo.AYStart ? false : true}
         onChange={(event) =>
-          setAYStartEnd({ ...AYStartEnd, end: event.target.value })
+          setRequiredInfo({
+            ...requiredInfo,
+            AYEnd: event.target.value,
+          })
         }
-      >
-        {year.map((year) => (
-          <MenuItem key={year} value={year}>
-            {year}
-          </MenuItem>
-        ))}
-      </TextField>
+      />
+
+      <div>
+        <Button
+          variant="contained"
+          className={classes.ShowButton}
+          disabled={requiredInfo.AYEnd ? false : true}
+        >
+          Show
+        </Button>
+      </div>
+
+      <Tabs />
     </div>
   );
 }

@@ -21,7 +21,9 @@ const useStyles = makeStyles((theme) => ({
   },
   btnHover: {
     "&:hover": {
-      color: "red",
+      color: "white",
+      backgroundColor: "red",
+      textDecoration: "underline",
     },
     fontWeight: "bold",
   },
@@ -171,7 +173,7 @@ export default function PrimarySearchAppBar() {
 
   return (
     <div className={classes.grow}>
-      <FormGroup style={{ height: "4px", background: "red" }}></FormGroup>
+      <FormGroup style={{ height: "4px", background: "#AF0000" }}></FormGroup>
       <AppBar position="static" color="transparent">
         <Toolbar>
           <img src={BUEHeaderLogo} alt="" style={{ height: 50, width: 130 }} />
