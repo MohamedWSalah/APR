@@ -1,11 +1,11 @@
 import React from "react";
-import TabHeader from "../TabHeader";
-import EnhancedTable from "./EntryTableUI";
+import AboveTableTExt from "../AboveTableText";
+import EditableTable from "./EntryTableUI";
 function EntryForTheAYs() {
   return (
     <React.Fragment>
-      <TabHeader headerText={"Entry for the AYs"} />
-      <EnhancedTable />
+      <AboveTableTExt headerText={"Entry for the AYs"} />
+      <EditableTable />
     </React.Fragment>
   );
 }

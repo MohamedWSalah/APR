@@ -1,6 +1,6 @@
 import React from "react";
 
-function TabHeader(props) {
+function AboveTableText(props) {
   const { headerText } = props;
   return (
     <p
@@ -18,4 +18,4 @@ function TabHeader(props) {
   );
 }
 
-export default TabHeader;
+export default AboveTableText;
