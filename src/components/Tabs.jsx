@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Tabs, Tab, Typography, Box, Button } from "@material-ui/core";
-import EntryForTheAYs from "./Tabels/EntryForTheAYs";
+import { AppBar, Tabs, Tab, Box, Button } from "@material-ui/core";
+import EntryForTheAYs from "./Tabels/EntryForTheAYsF/EntryForTheAYs";
+import EnglishLanguageLevels from "./Tabels/EnglishLanguageLevels/EnglishLanguageLevels";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -17,7 +18,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box p={3}>
-          <Typography>{children}</Typography>
+          <div>{children}</div>
         </Box>
       )}
     </div>
@@ -90,7 +91,7 @@ export default function ScrollableTabsButtonAuto() {
         <EntryForTheAYs />
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
+        <EnglishLanguageLevels />
       </TabPanel>
       <TabPanel value={value} index={2}>
         Item Three

@@ -73,6 +73,40 @@ const CustomTableCell = ({ row, name, onChange }) => {
   );
 };
 
+const CustomTableCell2 = ({ row, name1, name2, onChange }) => {
+  const classes = useStyles();
+  const { isEditMode } = row;
+  return (
+    <div>
+      <TableCell align="left" className={classes.tableCell}>
+        {isEditMode ? (
+          <Input
+            style={{ marginBottom: "50%" }}
+            value={row[name1]}
+            name={name1}
+            onChange={(e) => onChange(e, row)}
+            className={classes.input}
+          />
+        ) : (
+          row[name1]
+        )}
+      </TableCell>
+      <TableCell align="left" className={classes.tableCell}>
+        {isEditMode ? (
+          <Input
+            value={row[name2]}
+            name={name2}
+            onChange={(e) => onChange(e, row)}
+            className={classes.input}
+          />
+        ) : (
+          row[name2]
+        )}
+      </TableCell>
+    </div>
+  );
+};
+
 function EditableTable() {
   const [rows, setRows] = React.useState([
     // createData("1", 159, 6.0, 24, 4.0),
@@ -85,7 +119,8 @@ function EditableTable() {
       id: 1,
       batch: "1",
       yearOfEntry: 12,
-      bScCertificate: 123,
+      BUE: "YE",
+      NonBUE: "NO",
       totalNewStudentsPerSemester: 11,
       totalStudentsPerYear: 90,
     },
@@ -93,7 +128,8 @@ function EditableTable() {
       id: 2,
       batch: "2",
       yearOfEntry: 90,
-      bScCertificate: 75,
+      BUE: "YE",
+      NonBUE: "NO",
       totalNewStudentsPerSemester: 90000,
       totalStudentsPerYear: 5464,
     },
@@ -101,7 +137,8 @@ function EditableTable() {
       id: 3,
       batch: "3",
       yearOfEntry: 54645,
-      bScCertificate: 55,
+      BUE: "YE",
+      NonBUE: "NO",
       totalNewStudentsPerSemester: 7807,
       totalStudentsPerYear: 673,
     },
@@ -109,7 +146,8 @@ function EditableTable() {
       id: 4,
       batch: "4",
       yearOfEntry: 4353,
-      bScCertificate: 547,
+      BUE: "YE",
+      NonBUE: "NO",
       totalNewStudentsPerSemester: 45,
       totalStudentsPerYear: 5474,
     },
@@ -173,6 +211,12 @@ function EditableTable() {
             </TableCell>
             <TableCell className={classes.tableHeaderText} align="left">
               B. Sc Certificate
+              <TableCell className={classes.tableHeaderText} align="left">
+                BUE
+              </TableCell>
+              <TableCell className={classes.tableHeaderText} align="left">
+                NonBUE
+              </TableCell>
             </TableCell>
             <TableCell className={classes.tableHeaderText} align="left">
               Total New Students/Semester
@@ -212,7 +256,11 @@ function EditableTable() {
               </TableCell>
               <CustomTableCell {...{ row, name: "batch", onChange }} />
               <CustomTableCell {...{ row, name: "yearOfEntry", onChange }} />
-              <CustomTableCell {...{ row, name: "bScCertificate", onChange }} />
+
+              <CustomTableCell2
+                {...{ row, name1: "BUE", name2: "NonBUE", onChange }}
+              />
+
               <CustomTableCell
                 {...{ row, name: "totalNewStudentsPerSemester", onChange }}
               />
@@ -224,7 +272,7 @@ function EditableTable() {
         </TableBody>
       </Table>
       <Button variant="contained" onClick={() => console.log(rows)}>
-        CLICK
+        print state (TEST ONLY)
       </Button>
     </Paper>
   );
