@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { AppBar, Tabs, Tab, Box, Button } from "@material-ui/core";
 import EntryForTheAYs from "./Tabels/EntryForTheAYsF/EntryForTheAYs";
 import EnglishLanguageLevels from "./Tabels/EnglishLanguageLevels/EnglishLanguageLevels";
+import StaffSudentComMeetings from "./Tabels/StaffStudentComMeetings/StaffStudentComMeetings";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -94,10 +95,10 @@ export default function ScrollableTabsButtonAuto() {
         <EnglishLanguageLevels />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        Item three
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Item Four
+        <StaffSudentComMeetings />
       </TabPanel>
       <TabPanel value={value} index={4}>
         Item Five
@@ -112,25 +113,25 @@ export default function ScrollableTabsButtonAuto() {
       {value === 0 ? null : (
         <Button
           variant="contained"
-          color="primary"
-          style={{ left: "19%" }}
+          style={{ left: "19%", backgroundColor: "#AF0000", color: "white" }}
           onClick={() => (value > 0 ? setValue(value - 1) : null)}
         >
           Back
         </Button>
       )}
 
-      <Button
-        variant="contained"
-        color="primary"
-        style={{ left: "20%" }}
-        onClick={() =>
-          value === TabsInfo.length - 1 ? null : setValue(value + 1)
-        }
-        disabled={TabsInfo.length - 1 === value ? true : false}
-      >
-        Next
-      </Button>
+      {TabsInfo.length - 1 === value ? null : (
+        <Button
+          variant="contained"
+          style={{ left: "20%", backgroundColor: "#AF0000", color: "white" }}
+          onClick={() =>
+            value === TabsInfo.length - 1 ? null : setValue(value + 1)
+          }
+          disabled={TabsInfo.length - 1 === value ? true : false}
+        >
+          Next
+        </Button>
+      )}
     </div>
   );
 }

@@ -11,7 +11,13 @@ function AboveTableText(props) {
         margin: "10px 0 20px",
       }}
     >
-      <span style={{ backgroundColor: "#fff", padding: "0 10px" }}>
+      <span
+        style={{
+          backgroundColor: "#fff",
+          padding: "0 10px",
+          fontSize: "3.5vw",
+        }}
+      >
         {headerText}
       </span>
     </p>

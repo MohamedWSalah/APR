@@ -2,8 +2,8 @@ import React from "react";
 import { fade } from "@material-ui/core/styles";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import MoreIcon from "@material-ui/icons/MoreVert";
-import BUEHeaderLogo from "../Assets/BUE-logo.png";
-import headerLogo from "../Assets/rep2.png";
+import BUEHeaderLogo from "../../Assets/BUE-logo.png";
+import headerLogo from "../../Assets/signing3.jpg";
 import {
   Button,
   Menu,
@@ -20,6 +20,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   btnHover: {
+    width: "16vw",
+    height: "5vw",
     "&:hover": {
       color: "white",
       backgroundColor: "red",
@@ -180,7 +182,7 @@ export default function PrimarySearchAppBar() {
           <div style={{ marginLeft: "3vw" }}>
             <Button className={classes.btnHover}>Home</Button>
             <Button className={classes.btnHover} color="secondary">
-              APR
+              Annual Program Report
             </Button>
           </div>
 

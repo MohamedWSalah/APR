@@ -56,22 +56,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const createData = (
-//   batch,
-//   yearofEntry,
-//   bScCertificate,
-//   totalNewStudentsPerSemester,
-//   totalNewStudentsPerYear
-// ) => ({
-//   id: batch.replace(" ", "_"),
-//   batch,
-//   yearofEntry,
-//   bScCertificate,
-//   totalNewStudentsPerSemester,
-//   totalNewStudentsPerYear,
-//   isEditMode: false,
-// });
-
 const CustomTableCell = ({ row, name, onChange }) => {
   const classes = useStyles();
   const { isEditMode } = row;
@@ -94,47 +78,25 @@ const CustomTableCell = ({ row, name, onChange }) => {
 
 function EditableTable() {
   const [rows, setRows] = React.useState([
-    // createData("1", 159, 6.0, 24, 4.0),
-    // createData("2", 237, 9.0, 37, 4.3),
-    // createData("3", 262, 16.0, 24, 6.0),
-    // createData("3", 262, 16.0, 24, 6.0),
-    // createData("3", 262, 16.0, 24, 6.0),
-    // createData("3", 262, 16.0, 24, 6.0),
     {
       id: 1,
-      batch: "1",
-      yearOfEntry: 12,
-      BUE: "Yes",
-      NonBUE: "NO",
-      totalNewStudentsPerSemester: 11,
-      totalStudentsPerYear: 90,
+      issue: "Example 1",
+      action: "Example Action 1",
     },
     {
       id: 2,
-      batch: "2",
-      yearOfEntry: 14,
-      BUE: "No",
-      NonBUE: "Yes",
-      totalNewStudentsPerSemester: 900,
-      totalStudentsPerYear: 5464,
+      issue: "Example 2",
+      action: "Example Action 2",
     },
     {
       id: 3,
-      batch: "3",
-      yearOfEntry: 15,
-      BUE: "Yes",
-      NonBUE: "No",
-      totalNewStudentsPerSemester: 7807,
-      totalStudentsPerYear: 673,
+      issue: "Example 3",
+      action: "Example Action 3",
     },
     {
       id: 4,
-      batch: "4",
-      yearOfEntry: 16,
-      BUE: "Yes",
-      NonBUE: "No",
-      totalNewStudentsPerSemester: 45,
-      totalStudentsPerYear: 5474,
+      issue: "Example 4",
+      action: "Example Action 4",
     },
   ]);
   const [previous, setPrevious] = React.useState({});
@@ -187,56 +149,15 @@ function EditableTable() {
       <Table className={classes.table} aria-label="caption table">
         <TableHead>
           <TableRow style={{ backgroundColor: "#AF0000" }}>
-            <TableCell className={classes.tableHeaderText} align="left" />
-            <TableCell
-              className={classes.tableHeaderText}
-              align="left"
-              style={{ paddingBottom: "10px" }}
-            ></TableCell>
-            <TableCell
-              className={classes.tableHeaderText}
-              align="left"
-            ></TableCell>
-            <TableCell
-              colSpan={2}
-              className={classes.tableHeaderText}
-              align="left"
-            >
-              B. Sc Certificate
-            </TableCell>
-
-            <TableCell
-              className={classes.tableHeaderText}
-              align="left"
-            ></TableCell>
-            <TableCell
-              className={classes.tableHeaderText}
-              align="left"
-            ></TableCell>
-          </TableRow>
-
-          <TableRow style={{ backgroundColor: "#AF0000" }}>
             <TableCell
               className={classes.tableHeaderEmpty}
               align="left"
             ></TableCell>
             <TableCell className={classes.tableHeaderEmpty} align="left">
-              Batch
+              Issue
             </TableCell>
             <TableCell className={classes.tableHeaderEmpty} align="left">
-              Year of Entry
-            </TableCell>
-            <TableCell className={classes.tableHeaderText} align="left">
-              BUE
-            </TableCell>
-            <TableCell className={classes.tableHeaderText} align="left">
-              NonBUE
-            </TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Total New Students/Semester
-            </TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Total Students/Year
+              Action
             </TableCell>
           </TableRow>
         </TableHead>
@@ -268,16 +189,8 @@ function EditableTable() {
                   </IconButton>
                 )}
               </TableCell>
-              <CustomTableCell {...{ row, name: "batch", onChange }} />
-              <CustomTableCell {...{ row, name: "yearOfEntry", onChange }} />
-              <CustomTableCell {...{ row, name: "BUE", onChange }} />
-              <CustomTableCell {...{ row, name: "NonBUE", onChange }} />
-              <CustomTableCell
-                {...{ row, name: "totalNewStudentsPerSemester", onChange }}
-              />
-              <CustomTableCell
-                {...{ row, name: "totalStudentsPerYear", onChange }}
-              />
+              <CustomTableCell {...{ row, name: "issue", onChange }} />
+              <CustomTableCell {...{ row, name: "action", onChange }} />
             </TableRow>
           ))}
         </TableBody>

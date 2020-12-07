@@ -4,21 +4,24 @@ import { TextField, MenuItem } from "@material-ui/core";
 function DropDownMenu(props) {
   const { value, arrayMenu, label, onChange, disabled, autofocus } = props;
   return (
-    <TextField
-      disabled={disabled}
-      autoFocus={autofocus}
-      style={{ width: "25ch" }}
-      select
-      label={label}
-      value={value}
-      onChange={onChange}
-    >
-      {arrayMenu.map((item) => (
-        <MenuItem key={item} value={item}>
-          {item}
-        </MenuItem>
-      ))}
-    </TextField>
+    <>
+      <TextField
+        disabled={disabled}
+        autoFocus={autofocus}
+        style={{ width: "25ch" }}
+        InputLabelProps={{}}
+        select
+        label={label}
+        value={value}
+        onChange={onChange}
+      >
+        {arrayMenu.map((item) => (
+          <MenuItem key={item} value={item}>
+            {item}
+          </MenuItem>
+        ))}
+      </TextField>
+    </>
   );
 }
 

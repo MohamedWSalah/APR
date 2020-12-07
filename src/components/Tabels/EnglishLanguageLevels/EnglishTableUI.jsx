@@ -102,39 +102,30 @@ function EditableTable() {
     // createData("3", 262, 16.0, 24, 6.0),
     {
       id: 1,
-      batch: "1",
-      yearOfEntry: 12,
-      BUE: "Yes",
-      NonBUE: "NO",
-      totalNewStudentsPerSemester: 11,
-      totalStudentsPerYear: 90,
+      yearOfEntry: 18,
+      TOEFL: "Yes",
+      IELTS: "Yes",
+      BUEGraduate: "Yes",
     },
     {
       id: 2,
-      batch: "2",
-      yearOfEntry: 14,
-      BUE: "No",
-      NonBUE: "Yes",
-      totalNewStudentsPerSemester: 900,
-      totalStudentsPerYear: 5464,
+      yearOfEntry: 19,
+      TOEFL: "Yes",
+      IELTS: "No",
+      BUEGraduate: "Yes",
     },
     {
       id: 3,
-      batch: "3",
-      yearOfEntry: 15,
-      BUE: "Yes",
-      NonBUE: "No",
-      totalNewStudentsPerSemester: 7807,
-      totalStudentsPerYear: 673,
+      yearOfEntry: 16,
+      TOEFL: "NO",
+      IELTS: "NO",
+      BUEGraduate: "No",
     },
     {
-      id: 4,
-      batch: "4",
-      yearOfEntry: 16,
-      BUE: "Yes",
-      NonBUE: "No",
-      totalNewStudentsPerSemester: 45,
-      totalStudentsPerYear: 5474,
+      yearOfEntry: 20,
+      TOEFL: "Yes",
+      IELTS: "Yes",
+      BUEGraduate: "Yes",
     },
   ]);
   const [previous, setPrevious] = React.useState({});
@@ -193,26 +184,14 @@ function EditableTable() {
               align="left"
               style={{ paddingBottom: "10px" }}
             ></TableCell>
+
             <TableCell
-              className={classes.tableHeaderText}
-              align="left"
-            ></TableCell>
-            <TableCell
-              colSpan={2}
+              colSpan={3}
               className={classes.tableHeaderText}
               align="left"
             >
-              B. Sc Certificate
+              English Language Exam
             </TableCell>
-
-            <TableCell
-              className={classes.tableHeaderText}
-              align="left"
-            ></TableCell>
-            <TableCell
-              className={classes.tableHeaderText}
-              align="left"
-            ></TableCell>
           </TableRow>
 
           <TableRow style={{ backgroundColor: "#AF0000" }}>
@@ -220,23 +199,18 @@ function EditableTable() {
               className={classes.tableHeaderEmpty}
               align="left"
             ></TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Batch
-            </TableCell>
+
             <TableCell className={classes.tableHeaderEmpty} align="left">
               Year of Entry
             </TableCell>
             <TableCell className={classes.tableHeaderText} align="left">
-              BUE
+              TOEFL
             </TableCell>
             <TableCell className={classes.tableHeaderText} align="left">
-              NonBUE
+              IELTS
             </TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Total New Students/Semester
-            </TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Total Students/Year
+            <TableCell className={classes.tableHeaderText} align="left">
+              BUE Graduate
             </TableCell>
           </TableRow>
         </TableHead>
@@ -268,16 +242,10 @@ function EditableTable() {
                   </IconButton>
                 )}
               </TableCell>
-              <CustomTableCell {...{ row, name: "batch", onChange }} />
               <CustomTableCell {...{ row, name: "yearOfEntry", onChange }} />
-              <CustomTableCell {...{ row, name: "BUE", onChange }} />
-              <CustomTableCell {...{ row, name: "NonBUE", onChange }} />
-              <CustomTableCell
-                {...{ row, name: "totalNewStudentsPerSemester", onChange }}
-              />
-              <CustomTableCell
-                {...{ row, name: "totalStudentsPerYear", onChange }}
-              />
+              <CustomTableCell {...{ row, name: "TOEFL", onChange }} />
+              <CustomTableCell {...{ row, name: "IELTS", onChange }} />
+              <CustomTableCell {...{ row, name: "BUEGraduate", onChange }} />
             </TableRow>
           ))}
         </TableBody>

@@ -1,12 +1,12 @@
 import React from "react";
 import AboveTableTExt from "../../AboveTableText";
-import EditableTable from "./EntryTableUI";
+import EntryTableUI from "./EntryTableUI";
 import { Paper, TextField } from "@material-ui/core";
 function EntryForTheAYs() {
   return (
     <React.Fragment>
       <AboveTableTExt headerText={"Entry for the AYs"}></AboveTableTExt>
-      <EditableTable />
+      <EntryTableUI />
       <Paper
         elevation={3}
         square={false}
@@ -30,6 +30,9 @@ function EntryForTheAYs() {
             width: "90%",
           }}
           placeholder="Commentary here......"
+          multiline
+          rows={2}
+          rowsMax={4}
         />
       </Paper>
     </React.Fragment>
