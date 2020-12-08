@@ -1,6 +1,10 @@
 import React from "react";
 import AboveTableTExt from "../../AboveTableText";
 import Table from "../ReuseableTable";
+const rowData = [
+  "Two Program Exam boards (2 PEBs) were held during S1 & S2 AY 18/19",
+];
+const numberIndex = [0];
 const dataToBeDisplayed = [
   {
     id: 1,
@@ -17,20 +21,17 @@ const dataToBeDisplayed = [
     issue: "Example 3",
     action: "Example Action 3",
   },
-  {
-    id: 4,
-    issue: "Example 4",
-    action: "Example Action 4",
-  },
 ];
-function StaffSudentComMeetings() {
+function LSBULinkTutorReports() {
   return (
     <React.Fragment>
-      <AboveTableTExt
-        headerText={"Staff Students Committee Meetings"}
-      ></AboveTableTExt>
-      <Table dataToBeDisplayed={dataToBeDisplayed} />
+      <AboveTableTExt headerText={"LSBU Link Tutor Reports"}></AboveTableTExt>
+      <Table
+        texts={rowData}
+        numbers={numberIndex}
+        dataToBeDisplayed={dataToBeDisplayed}
+      />
     </React.Fragment>
   );
 }
-export default StaffSudentComMeetings;
+export default LSBULinkTutorReports;

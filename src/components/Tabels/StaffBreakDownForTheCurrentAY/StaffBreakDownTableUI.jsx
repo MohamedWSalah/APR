@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     width: 60,
   },
   tableCell: {
-    width: "30vw",
+    maxWidth: "30vw",
     height: 40,
     textAlign: "center",
     "&:hover": {
@@ -56,22 +56,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-// const createData = (
-//   batch,
-//   yearofEntry,
-//   bScCertificate,
-//   totalNewStudentsPerSemester,
-//   totalNewStudentsPerYear
-// ) => ({
-//   id: batch.replace(" ", "_"),
-//   batch,
-//   yearofEntry,
-//   bScCertificate,
-//   totalNewStudentsPerSemester,
-//   totalNewStudentsPerYear,
-//   isEditMode: false,
-// });
-
 const CustomTableCell = ({ row, name, onChange }) => {
   const classes = useStyles();
   const { isEditMode } = row;
@@ -92,43 +76,9 @@ const CustomTableCell = ({ row, name, onChange }) => {
   );
 };
 
-function EditableTable() {
-  const [rows, setRows] = React.useState([
-    // createData("1", 159, 6.0, 24, 4.0),
-    // createData("2", 237, 9.0, 37, 4.3),
-    // createData("3", 262, 16.0, 24, 6.0),
-    // createData("3", 262, 16.0, 24, 6.0),
-    // createData("3", 262, 16.0, 24, 6.0),
-    // createData("3", 262, 16.0, 24, 6.0),
-    {
-      id: 1,
-      yearOfEntry: 18,
-      TOEFL: "Yes",
-      IELTS: "Yes",
-      BUEGraduate: "Yes",
-    },
-    {
-      id: 2,
-      yearOfEntry: 19,
-      TOEFL: "Yes",
-      IELTS: "No",
-      BUEGraduate: "Yes",
-    },
-    {
-      id: 3,
-      yearOfEntry: 16,
-      TOEFL: "NO",
-      IELTS: "NO",
-      BUEGraduate: "No",
-    },
-    {
-      id: 4,
-      yearOfEntry: 20,
-      TOEFL: "Yes",
-      IELTS: "Yes",
-      BUEGraduate: "Yes",
-    },
-  ]);
+function EditableTable(props) {
+  const { dataToBeDisplayed } = props;
+  const [rows, setRows] = React.useState(dataToBeDisplayed);
   const [previous, setPrevious] = React.useState({});
   const classes = useStyles();
 
@@ -179,39 +129,21 @@ function EditableTable() {
       <Table className={classes.table} aria-label="caption table">
         <TableHead>
           <TableRow style={{ backgroundColor: "#AF0000" }}>
-            <TableCell className={classes.tableHeaderText} align="left" />
-            <TableCell
-              className={classes.tableHeaderText}
-              align="left"
-              style={{ paddingBottom: "10px" }}
-            ></TableCell>
-
-            <TableCell
-              colSpan={3}
-              className={classes.tableHeaderText}
-              align="left"
-            >
-              English Language Exam
-            </TableCell>
-          </TableRow>
-
-          <TableRow style={{ backgroundColor: "#AF0000" }}>
             <TableCell
               className={classes.tableHeaderEmpty}
               align="left"
             ></TableCell>
-
             <TableCell className={classes.tableHeaderEmpty} align="left">
-              Year of Entry
+              Number of Staff
+            </TableCell>
+            <TableCell className={classes.tableHeaderEmpty} align="left">
+              F/T Academic Staff
             </TableCell>
             <TableCell className={classes.tableHeaderText} align="left">
-              TOEFL
+              P/T Academic Staff
             </TableCell>
             <TableCell className={classes.tableHeaderText} align="left">
-              IELTS
-            </TableCell>
-            <TableCell className={classes.tableHeaderText} align="left">
-              BUE Graduate
+              SSR
             </TableCell>
           </TableRow>
         </TableHead>
@@ -243,10 +175,14 @@ function EditableTable() {
                   </IconButton>
                 )}
               </TableCell>
-              <CustomTableCell {...{ row, name: "yearOfEntry", onChange }} />
-              <CustomTableCell {...{ row, name: "TOEFL", onChange }} />
-              <CustomTableCell {...{ row, name: "IELTS", onChange }} />
-              <CustomTableCell {...{ row, name: "BUEGraduate", onChange }} />
+              <CustomTableCell {...{ row, name: "numberOfStaff", onChange }} />
+              <CustomTableCell
+                {...{ row, name: "fTAcademicStaff", onChange }}
+              />
+              <CustomTableCell
+                {...{ row, name: "pTAcademicStaff", onChange }}
+              />
+              <CustomTableCell {...{ row, name: "SSR", onChange }} />
             </TableRow>
           ))}
         </TableBody>

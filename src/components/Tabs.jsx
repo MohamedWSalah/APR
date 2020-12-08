@@ -5,6 +5,13 @@ import { AppBar, Tabs, Tab, Box, Button } from "@material-ui/core";
 import EntryForTheAYs from "./Tabels/EntryForTheAYsF/EntryForTheAYs";
 import EnglishLanguageLevels from "./Tabels/EnglishLanguageLevels/EnglishLanguageLevels";
 import StaffSudentComMeetings from "./Tabels/StaffStudentComMeetings/StaffStudentComMeetings";
+import ProgramFeedback from "./Tabels/ProgramFeedback/ProgramFeedback";
+import TeachingStaff from "./Tabels/TeachingStaff/TeachingStaff";
+import LSBULinkTutorReports from "./Tabels/LSBULinkTutorReports/LSBULinkTutorReports";
+import ReviewOfAssessments from "./Tabels/ReviewOfAssessments/ReviewOfAssessments";
+import ExternalExaminerReport from "./Tabels/ExternalExaminerReport/ExternalExaminerReport";
+import ModuleSpecifications from "./Tabels/ModuleSpecifications/ModuleSpecifications";
+import StaffBreakDownForTheCurrentAY from "./Tabels/StaffBreakDownForTheCurrentAY/StaffBreakDownForTheCurrentAY";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -95,19 +102,32 @@ export default function ScrollableTabsButtonAuto() {
         <EnglishLanguageLevels />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item three
+        Pending....
       </TabPanel>
       <TabPanel value={value} index={3}>
         <StaffSudentComMeetings />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Item Five
+        <ProgramFeedback />
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Item Six
+        <TeachingStaff />
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Item Seven
+        <LSBULinkTutorReports />
+      </TabPanel>
+      <TabPanel value={value} index={7}>
+        <ReviewOfAssessments />
+      </TabPanel>
+      <TabPanel value={value} index={8}>
+        <ExternalExaminerReport />
+      </TabPanel>
+      <TabPanel value={value} index={9}>
+        <ModuleSpecifications />
+      </TabPanel>
+
+      <TabPanel value={value} index={10}>
+        <StaffBreakDownForTheCurrentAY />
       </TabPanel>
 
       {value === 0 ? null : (

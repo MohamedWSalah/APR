@@ -1,6 +1,8 @@
 import React from "react";
 import AboveTableTExt from "../../AboveTableText";
 import Table from "../ReuseableTable";
+const rowData = ["Items identified in relation to Module specifications"];
+const numberIndex = [0];
 const dataToBeDisplayed = [
   {
     id: 1,
@@ -17,20 +19,17 @@ const dataToBeDisplayed = [
     issue: "Example 3",
     action: "Example Action 3",
   },
-  {
-    id: 4,
-    issue: "Example 4",
-    action: "Example Action 4",
-  },
 ];
-function StaffSudentComMeetings() {
+function ModuleSpecifications() {
   return (
     <React.Fragment>
-      <AboveTableTExt
-        headerText={"Staff Students Committee Meetings"}
-      ></AboveTableTExt>
-      <Table dataToBeDisplayed={dataToBeDisplayed} />
+      <AboveTableTExt headerText={"Module Specifications"}></AboveTableTExt>
+      <Table
+        texts={rowData}
+        numbers={numberIndex}
+        dataToBeDisplayed={dataToBeDisplayed}
+      />
     </React.Fragment>
   );
 }
-export default StaffSudentComMeetings;
+export default ModuleSpecifications;

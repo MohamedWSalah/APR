@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     width: 60,
   },
   tableCell: {
-    width: "30vw",
+    maxWidth: "30vw",
     height: 40,
     textAlign: "center",
     "&:hover": {
@@ -76,29 +76,12 @@ const CustomTableCell = ({ row, name, onChange }) => {
   );
 };
 
-function EditableTable() {
-  const [rows, setRows] = React.useState([
-    {
-      id: 1,
-      issue: "Example 1",
-      action: "Example Action 1",
-    },
-    {
-      id: 2,
-      issue: "Example 2",
-      action: "Example Action 2",
-    },
-    {
-      id: 3,
-      issue: "Example 3",
-      action: "Example Action 3",
-    },
-    {
-      id: 4,
-      issue: "Example 4",
-      action: "Example Action 4",
-    },
-  ]);
+function EditableTable(props) {
+  let counter = 0;
+  const { texts, numbers, dataToBeDisplayed } = props;
+
+  const [rows, setRows] = React.useState(dataToBeDisplayed);
+
   const [previous, setPrevious] = React.useState({});
   const classes = useStyles();
 
@@ -163,35 +146,53 @@ function EditableTable() {
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell className={classes.selectTableCell}>
-                {row.isEditMode ? (
-                  <>
+            <React.Fragment key={row.id}>
+              {numbers ? (
+                numbers.includes(rows.indexOf(row)) ? (
+                  <TableRow>
+                    <TableCell
+                      colSpan={3}
+                      className={classes.selectTableCell}
+                      style={{
+                        fontWeight: "bold",
+                        backgroundColor: "#bdbdbd",
+                      }}
+                    >
+                      {texts[counter++]}
+                    </TableCell>
+                  </TableRow>
+                ) : null
+              ) : null}
+              <TableRow key={row.id}>
+                <TableCell className={classes.selectTableCell}>
+                  {row.isEditMode ? (
+                    <>
+                      <IconButton
+                        aria-label="done"
+                        onClick={() => onToggleEditMode(row.id)}
+                      >
+                        <DoneIcon />
+                      </IconButton>
+                      <IconButton
+                        aria-label="revert"
+                        onClick={() => onRevert(row.id)}
+                      >
+                        <RevertIcon />
+                      </IconButton>
+                    </>
+                  ) : (
                     <IconButton
-                      aria-label="done"
+                      aria-label="delete"
                       onClick={() => onToggleEditMode(row.id)}
                     >
-                      <DoneIcon />
+                      <EditIcon />
                     </IconButton>
-                    <IconButton
-                      aria-label="revert"
-                      onClick={() => onRevert(row.id)}
-                    >
-                      <RevertIcon />
-                    </IconButton>
-                  </>
-                ) : (
-                  <IconButton
-                    aria-label="delete"
-                    onClick={() => onToggleEditMode(row.id)}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                )}
-              </TableCell>
-              <CustomTableCell {...{ row, name: "issue", onChange }} />
-              <CustomTableCell {...{ row, name: "action", onChange }} />
-            </TableRow>
+                  )}
+                </TableCell>
+                <CustomTableCell {...{ row, name: "issue", onChange }} />
+                <CustomTableCell {...{ row, name: "action", onChange }} />
+              </TableRow>
+            </React.Fragment>
           ))}
         </TableBody>
       </Table>

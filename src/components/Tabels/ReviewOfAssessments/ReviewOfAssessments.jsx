@@ -23,14 +23,16 @@ const dataToBeDisplayed = [
     action: "Example Action 4",
   },
 ];
-function StaffSudentComMeetings() {
+function ReviewOfAssessments() {
   return (
     <React.Fragment>
-      <AboveTableTExt
-        headerText={"Staff Students Committee Meetings"}
-      ></AboveTableTExt>
+      <AboveTableTExt headerText={"Review of assessments"}></AboveTableTExt>
+      <p>
+        Issues identified by the Subject Advisor’s/Link Tutor’s review or the
+        External Examiners review of assessments.
+      </p>
       <Table dataToBeDisplayed={dataToBeDisplayed} />
     </React.Fragment>
   );
 }
-export default StaffSudentComMeetings;
+export default ReviewOfAssessments;

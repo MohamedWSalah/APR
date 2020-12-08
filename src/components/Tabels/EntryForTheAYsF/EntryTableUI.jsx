@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
     width: 60,
   },
   tableCell: {
-    width: "30vw",
+    maxWidth: "30vw",
     height: 40,
     textAlign: "center",
     "&:hover": {
