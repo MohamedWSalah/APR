@@ -12,6 +12,8 @@ import ReviewOfAssessments from "./Tabels/ReviewOfAssessments/ReviewOfAssessment
 import ExternalExaminerReport from "./Tabels/ExternalExaminerReport/ExternalExaminerReport";
 import ModuleSpecifications from "./Tabels/ModuleSpecifications/ModuleSpecifications";
 import StaffBreakDownForTheCurrentAY from "./Tabels/StaffBreakDownForTheCurrentAY/StaffBreakDownForTheCurrentAY";
+import StudentProfileAndMarketing from "./Tabels/StudentProfileAndMarketing/StudentProfileAndMarketing";
+import SupportingDoc from "./Tabels/SupportingDocumentation/SupportingDocumentation";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -125,9 +127,14 @@ export default function ScrollableTabsButtonAuto() {
       <TabPanel value={value} index={9}>
         <ModuleSpecifications />
       </TabPanel>
-
       <TabPanel value={value} index={10}>
         <StaffBreakDownForTheCurrentAY />
+      </TabPanel>
+      <TabPanel value={value} index={11}>
+        <StudentProfileAndMarketing />
+      </TabPanel>
+      <TabPanel value={value} index={12}>
+        <SupportingDoc />
       </TabPanel>
 
       {value === 0 ? null : (

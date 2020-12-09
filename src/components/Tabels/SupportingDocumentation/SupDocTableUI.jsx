@@ -1,4 +1,3 @@
-//This component was used in the tabs with "issue" and "Action" Headers Only
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -56,7 +55,7 @@ const useStyles = makeStyles((theme) => ({
     borderLeft: "1px solid white",
   },
 }));
-
+const header = ["Vice Dean", "Signature", "Date"];
 const CustomTableCell = ({ row, name, onChange }) => {
   const classes = useStyles();
   const { isEditMode } = row;
@@ -76,13 +75,9 @@ const CustomTableCell = ({ row, name, onChange }) => {
     </TableCell>
   );
 };
-
 function EditableTable(props) {
-  let counter = 0;
-  const { texts, numbers, dataToBeDisplayed } = props;
-
+  const { dataToBeDisplayed } = props;
   const [rows, setRows] = React.useState(dataToBeDisplayed);
-
   const [previous, setPrevious] = React.useState({});
   const classes = useStyles();
 
@@ -137,63 +132,54 @@ function EditableTable(props) {
               className={classes.tableHeaderEmpty}
               align="left"
             ></TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Issue
-            </TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Action
-            </TableCell>
+            <TableCell
+              className={classes.tableHeaderEmpty}
+              align="left"
+            ></TableCell>
+            <TableCell
+              className={classes.tableHeaderEmpty}
+              align="left"
+            ></TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <React.Fragment key={row.id}>
-              {numbers ? (
-                numbers.includes(rows.indexOf(row)) ? (
-                  <TableRow>
-                    <TableCell
-                      colSpan={3}
-                      className={classes.selectTableCell}
-                      style={{
-                        fontWeight: "bold",
-                        backgroundColor: "#f7f7f7",
-                      }}
-                    >
-                      {texts[counter++]}
-                    </TableCell>
-                  </TableRow>
-                ) : null
-              ) : null}
-              <TableRow key={row.id}>
-                <TableCell className={classes.selectTableCell}>
-                  {row.isEditMode ? (
-                    <>
-                      <IconButton
-                        aria-label="done"
-                        onClick={() => onToggleEditMode(row.id)}
-                      >
-                        <DoneIcon />
-                      </IconButton>
-                      <IconButton
-                        aria-label="revert"
-                        onClick={() => onRevert(row.id)}
-                      >
-                        <RevertIcon />
-                      </IconButton>
-                    </>
-                  ) : (
+            <TableRow key={row.id}>
+              <TableCell className={classes.selectTableCell}>
+                {row.isEditMode ? (
+                  <>
                     <IconButton
-                      aria-label="delete"
+                      aria-label="done"
                       onClick={() => onToggleEditMode(row.id)}
                     >
-                      <EditIcon />
+                      <DoneIcon />
                     </IconButton>
-                  )}
-                </TableCell>
-                <CustomTableCell {...{ row, name: "issue", onChange }} />
-                <CustomTableCell {...{ row, name: "action", onChange }} />
-              </TableRow>
-            </React.Fragment>
+                    <IconButton
+                      aria-label="revert"
+                      onClick={() => onRevert(row.id)}
+                    >
+                      <RevertIcon />
+                    </IconButton>
+                  </>
+                ) : (
+                  <IconButton
+                    aria-label="delete"
+                    onClick={() => onToggleEditMode(row.id)}
+                  >
+                    <EditIcon />
+                  </IconButton>
+                )}
+              </TableCell>
+              <TableCell
+                style={{
+                  fontWeight: "bold",
+                  width: "10em",
+                }}
+              >
+                {header[rows.indexOf(row)]}
+              </TableCell>
+              <CustomTableCell {...{ row, name: "VD", onChange }} />
+            </TableRow>
           ))}
         </TableBody>
       </Table>

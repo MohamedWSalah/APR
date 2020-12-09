@@ -9,7 +9,6 @@ function DropDownMenu(props) {
         disabled={disabled}
         autoFocus={autofocus}
         style={{ width: "25ch" }}
-        InputLabelProps={{}}
         select
         label={label}
         value={value}

@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+.MuiInputLabel-shrink {
+  font-size: 135% !important;
+  font-weight: bold !important;
+  color: black !important;
+}

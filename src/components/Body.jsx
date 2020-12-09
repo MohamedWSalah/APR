@@ -32,7 +32,7 @@ function Body() {
   ];
   const programTitles = ["Example 1", "Example 2", "Example 3"];
   const year = ["16", "17", "18"];
-
+  const [show, setShow] = useState(false);
   const [requiredInfo, setRequiredInfo] = useState({
     faculty: "",
     programTitle: "",
@@ -95,12 +95,13 @@ function Body() {
           variant="contained"
           className={classes.ShowButton}
           disabled={requiredInfo.AYEnd ? false : true}
+          onClick={() => setShow(true)}
         >
           Show
         </Button>
       </div>
 
-      <Tabs />
+      {show === true ? <Tabs /> : null}
     </div>
   );
 }
