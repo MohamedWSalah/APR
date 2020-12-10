@@ -14,6 +14,7 @@ import ModuleSpecifications from "./Tabels/ModuleSpecifications/ModuleSpecificat
 import StaffBreakDownForTheCurrentAY from "./Tabels/StaffBreakDownForTheCurrentAY/StaffBreakDownForTheCurrentAY";
 import StudentProfileAndMarketing from "./Tabels/StudentProfileAndMarketing/StudentProfileAndMarketing";
 import SupportingDoc from "./Tabels/SupportingDocumentation/SupportingDocumentation";
+import PBDMain from "./Tabels/ProgramBoardDecisions/PBDMain";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -104,7 +105,7 @@ export default function ScrollableTabsButtonAuto() {
         <EnglishLanguageLevels />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Pending....
+        <PBDMain />
       </TabPanel>
       <TabPanel value={value} index={3}>
         <StaffSudentComMeetings />

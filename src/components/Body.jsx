@@ -101,7 +101,7 @@ function Body() {
         </Button>
       </div>
 
-      {show === true ? <Tabs /> : null}
+      {show === false ? <Tabs /> : null}
     </div>
   );
 }
