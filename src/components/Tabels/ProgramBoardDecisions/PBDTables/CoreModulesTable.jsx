@@ -7,11 +7,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
 import Paper from "@material-ui/core/Paper";
-import IconButton from "@material-ui/core/IconButton";
-// Icons
-import EditIcon from "@material-ui/icons/EditOutlined";
-import DoneIcon from "@material-ui/icons/DoneAllTwoTone";
-import RevertIcon from "@material-ui/icons/NotInterestedOutlined";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -72,9 +67,10 @@ const useStyles = makeStyles((theme) => ({
 //   isEditMode: false,
 // });
 
-const CustomTableCell = ({ row, name, perc, onChange }) => {
+const CustomTableCell = ({ row, name, totalStud, onChange }) => {
   const classes = useStyles();
   const { isEditMode } = row;
+  const percentage = ((row[name] * 100) / row[totalStud]).toFixed(1);
   return (
     <TableCell align="left" className={classes.tableCell}>
       {isEditMode ? (
@@ -86,19 +82,29 @@ const CustomTableCell = ({ row, name, perc, onChange }) => {
           className={classes.input}
         />
       ) : (
-        <>{perc ? row[name] + `  (${row[perc]}%)` : row[name]}</>
+        <>{totalStud ? row[name] + `\n (${percentage}%)` : row[name]}</>
       )}
     </TableCell>
   );
 };
+let semesterOneCols = 0;
+let semesterTwoCols = 0;
+const SemesterModulesNumber = (rows) => {
+  semesterOneCols = 0;
+  semesterTwoCols = 0;
+  rows.forEach(function (Item) {
+    Item.semester === 1 ? semesterOneCols++ : semesterTwoCols++;
+  });
+};
 
-function EditableTable() {
+function EditableTable(props) {
   const [rows, setRows] = React.useState([
     {
       id: 1,
+      semester: 1,
       module: "Intro to Web Science",
       totalNumberOfStudents: 12,
-      studentsFirstAttempt: "10",
+      studentsFirstAttempt: 12,
       percentageFirstAttempt: "80",
       studentsSecondAttempt: "10",
       percentageSecondAttempt: "20",
@@ -107,6 +113,7 @@ function EditableTable() {
     },
     {
       id: 2,
+      semester: 1,
       module: "Service Oriented SE",
       totalNumberOfStudents: 14,
       studentsFirstAttempt: "2",
@@ -118,6 +125,7 @@ function EditableTable() {
     },
     {
       id: 3,
+      semester: 1,
       module: "Web Modeling",
       totalNumberOfStudents: 15,
       studentsFirstAttempt: "4",
@@ -129,6 +137,7 @@ function EditableTable() {
     },
     {
       id: 4,
+      semester: 2,
       module: "Web Topologies",
       totalNumberOfStudents: 16,
       studentsFirstAttempt: "9",
@@ -138,7 +147,20 @@ function EditableTable() {
       studentPassImprove: "1",
       percentagePassImprove: "100",
     },
+    {
+      id: 5,
+      semester: 2,
+      module: "Data Science",
+      totalNumberOfStudents: 999,
+      studentsFirstAttempt: "2",
+      percentageFirstAttempt: "80",
+      studentsSecondAttempt: "10",
+      percentageSecondAttempt: "16",
+      studentPassImprove: "1",
+      percentagePassImprove: "100",
+    },
   ]);
+  SemesterModulesNumber(rows);
   const [previous, setPrevious] = React.useState({});
   const classes = useStyles();
 
@@ -199,12 +221,12 @@ function EditableTable() {
             <TableCell
               className={classes.tableHeaderText}
               align="left"
-              colSpan={2}
+              colSpan={semesterOneCols}
             >
               Semester 1
             </TableCell>
             <TableCell
-              colSpan={2}
+              colSpan={semesterTwoCols}
               className={classes.tableHeaderText}
               align="left"
             >
@@ -225,18 +247,11 @@ function EditableTable() {
             >
               Module Code and Title
             </TableCell>
-            <TableCell className={classes.tableHeaderText} align="left">
-              {rows[0].module}
-            </TableCell>
-            <TableCell className={classes.tableHeaderText} align="left">
-              {rows[1].module}
-            </TableCell>
-            <TableCell className={classes.tableHeaderText} align="left">
-              {rows[2].module}
-            </TableCell>
-            <TableCell className={classes.tableHeaderText} align="left">
-              {rows[3].module}
-            </TableCell>
+            {rows.map((row) => (
+              <TableCell className={classes.tableHeaderText} align="left">
+                {row.module}
+              </TableCell>
+            ))}
           </TableRow>
         </TableHead>
 
@@ -263,7 +278,7 @@ function EditableTable() {
                 {...{
                   row,
                   name: "studentsFirstAttempt",
-                  perc: "percentageFirstAttempt",
+                  totalStud: "totalNumberOfStudents",
                   onChange,
                 }}
               />
@@ -282,7 +297,7 @@ function EditableTable() {
                 {...{
                   row,
                   name: "studentsSecondAttempt",
-                  perc: "percentageSecondAttempt",
+                  totalStud: "totalNumberOfStudents",
                   onChange,
                 }}
               />
@@ -302,8 +317,8 @@ function EditableTable() {
               <CustomTableCell
                 {...{
                   row,
-                  name: "studentsFirstAttempt",
-                  perc: "percentageFirstAttempt",
+                  name: "studentPassImprove",
+                  totalStud: "totalNumberOfStudents",
                   onChange,
                 }}
               />
