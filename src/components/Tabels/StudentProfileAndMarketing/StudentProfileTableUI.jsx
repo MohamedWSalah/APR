@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "30vw",
     height: 40,
     textAlign: "center",
+    fontSize: "25px",
     "&:hover": {
       color: "black",
       backgroundColor: "rgb(0, 0, 0, 0.1)",

@@ -30,6 +30,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "30vw",
     height: 40,
     textAlign: "center",
+    fontSize: "25px",
     "&:hover": {
       color: "black",
       backgroundColor: "rgb(0, 0, 0, 0.1)",
@@ -38,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
   input: {
     width: 130,
     height: 40,
+    fontSize: "25px",
   },
   tableHeaderText: {
     color: "white",
@@ -174,6 +176,7 @@ function EditableTable(props) {
                 style={{
                   fontWeight: "bold",
                   width: "10em",
+                  fontSize: "25px",
                 }}
               >
                 {header[rows.indexOf(row)]}

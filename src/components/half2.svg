@@ -1,0 +1,10 @@
+<svg width="640" height="480" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <ellipse ry="56.5" rx="73.50001"  cy="274.95313" cx="-14.49999" stroke-width="1.5" fill="#AF0000"/>
+  <path stroke="#000" d="0" id="svg_8" stroke-opacity="null" stroke-width="4" fill="none"/>
+  <line transform="translate(-1,0) " stroke-linecap="null" stroke-linejoin="null" id="svg_11" y2="261.5" x2="45.35499" y1="261.5" x1="7.5" stroke-width="4" stroke="#ffffff" fill="none"/>
+  <line transform="translate(-1,0) " stroke-linecap="null" stroke-linejoin="null" id="svg_12" y2="274.5" x2="45.35499" y1="274.5" x1="7.5" stroke-width="4" stroke="#ffffff" fill="none"/>
+  <line transform="translate(-1,0) " stroke-linecap="null" stroke-linejoin="null" id="svg_13" y2="287.5" x2="45.35499" y1="287.5" x1="7.5" stroke-width="4" stroke="#ffffff" fill="none"/>
+  </g>
+</svg>

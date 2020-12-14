@@ -8,7 +8,7 @@ function DropDownMenu(props) {
       <TextField
         disabled={disabled}
         autoFocus={autofocus}
-        style={{ width: "25ch" }}
+        style={{ width: "38ch" }}
         select
         label={label}
         value={value}

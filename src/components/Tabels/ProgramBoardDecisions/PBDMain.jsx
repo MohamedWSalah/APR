@@ -3,7 +3,11 @@ import AboveTableText from "../../AboveTableText";
 import CoreModulesTable from "./PBDTables/CoreModulesTable";
 import { makeStyles, AppBar, Tabs, Tab, Box } from "@material-ui/core";
 import PropTypes from "prop-types";
-
+import SummaryProbationPeriod from "./PBDTables/SummaryProbationPeriod";
+import ProgressionThesisPropsal from "./PBDTables/ProgressionThesisProposal";
+import VoluntaryWithdrawls from "./PBDTables/VoluntaryWithdrawls";
+import ExpectedToGraduate from "./PBDTables/ExpectedToGraduate";
+import DegreeAwarded from "./PBDTables/DegreeAwarded";
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -82,22 +86,26 @@ function PBDMain() {
         <CoreModulesTable />
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Pending....
+        <AboveTableText headerText={"Summary probation period"} />
+        <SummaryProbationPeriod />
       </TabPanel>
       <TabPanel value={value} index={3}>
-        Pending....
+        <AboveTableText headerText={"Progression to Thesis propsal"} />
+        <ProgressionThesisPropsal />
       </TabPanel>
       <TabPanel value={value} index={4}>
-        Pending....
+        <AboveTableText
+          headerText={"Voluntary withdrawls / official dismissed"}
+        />
+        <VoluntaryWithdrawls />
       </TabPanel>
       <TabPanel value={value} index={5}>
-        Pending....
+        <AboveTableText headerText={"Expected to be graduated in 18/19"} />
+        <ExpectedToGraduate />
       </TabPanel>
       <TabPanel value={value} index={6}>
-        Pending....
-      </TabPanel>
-      <TabPanel value={value} index={7}>
-        Pending....
+        <AboveTableText headerText={"Degree Awarded"} />
+        <DegreeAwarded />
       </TabPanel>
     </div>
   );

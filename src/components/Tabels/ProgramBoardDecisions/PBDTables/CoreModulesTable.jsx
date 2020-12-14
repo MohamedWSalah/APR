@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: "30vw",
     height: 40,
     textAlign: "center",
+    fontSize: "25px",
     "&:hover": {
       color: "black",
       backgroundColor: "rgb(0, 0, 0, 0.1)",
@@ -33,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   input: {
     width: 130,
     height: 40,
+    fontSize: "25px",
   },
   tableHeaderText: {
     color: "white",
@@ -50,22 +52,6 @@ const useStyles = makeStyles((theme) => ({
     borderLeft: "1px solid white",
   },
 }));
-
-// const createData = (
-//   batch,
-//   yearofEntry,
-//   bScCertificate,
-//   totalNewStudentsPerSemester,
-//   totalNewStudentsPerYear
-// ) => ({
-//   id: batch.replace(" ", "_"),
-//   batch,
-//   yearofEntry,
-//   bScCertificate,
-//   totalNewStudentsPerSemester,
-//   totalNewStudentsPerYear,
-//   isEditMode: false,
-// });
 
 const CustomTableCell = ({ row, name, totalStud, onChange }) => {
   const classes = useStyles();
@@ -105,11 +91,8 @@ function EditableTable(props) {
       module: "Intro to Web Science",
       totalNumberOfStudents: 12,
       studentsFirstAttempt: 12,
-      percentageFirstAttempt: "80",
       studentsSecondAttempt: "10",
-      percentageSecondAttempt: "20",
       studentPassImprove: "1",
-      percentagePassImprove: "100",
     },
     {
       id: 2,
@@ -117,11 +100,8 @@ function EditableTable(props) {
       module: "Service Oriented SE",
       totalNumberOfStudents: 14,
       studentsFirstAttempt: "2",
-      percentageFirstAttempt: "80",
       studentsSecondAttempt: "10",
-      percentageSecondAttempt: "16",
       studentPassImprove: "1",
-      percentagePassImprove: "100",
     },
     {
       id: 3,
@@ -129,11 +109,17 @@ function EditableTable(props) {
       module: "Web Modeling",
       totalNumberOfStudents: 15,
       studentsFirstAttempt: "4",
-      percentageFirstAttempt: "80",
       studentsSecondAttempt: "10",
-      percentageSecondAttempt: "79",
       studentPassImprove: "1",
-      percentagePassImprove: "100",
+    },
+    {
+      id: 5,
+      semester: 1,
+      module: "Data Science",
+      totalNumberOfStudents: 999,
+      studentsFirstAttempt: "2",
+      studentsSecondAttempt: "10",
+      studentPassImprove: "1",
     },
     {
       id: 4,
@@ -141,11 +127,8 @@ function EditableTable(props) {
       module: "Web Topologies",
       totalNumberOfStudents: 16,
       studentsFirstAttempt: "9",
-      percentageFirstAttempt: "80",
       studentsSecondAttempt: "10",
-      percentageSecondAttempt: "54",
       studentPassImprove: "1",
-      percentagePassImprove: "100",
     },
     {
       id: 5,
@@ -153,11 +136,17 @@ function EditableTable(props) {
       module: "Data Science",
       totalNumberOfStudents: 999,
       studentsFirstAttempt: "2",
-      percentageFirstAttempt: "80",
       studentsSecondAttempt: "10",
-      percentageSecondAttempt: "16",
       studentPassImprove: "1",
-      percentagePassImprove: "100",
+    },
+    {
+      id: 5,
+      semester: 2,
+      module: "Data Science",
+      totalNumberOfStudents: 999,
+      studentsFirstAttempt: "2",
+      studentsSecondAttempt: "10",
+      studentPassImprove: "1",
     },
   ]);
   SemesterModulesNumber(rows);
@@ -258,7 +247,12 @@ function EditableTable(props) {
         <TableBody>
           <TableRow>
             <TableCell>1</TableCell>
-            <TableCell colSpan={2}>Total Number of Students</TableCell>
+            <TableCell
+              colSpan={2}
+              style={{ fontWeight: "bold", fontSize: "20px" }}
+            >
+              Total Number of Students
+            </TableCell>
             {rows.map((row) => (
               <CustomTableCell
                 {...{ row, name: "totalNumberOfStudents", onChange }}
@@ -268,10 +262,12 @@ function EditableTable(props) {
 
           <TableRow>
             <TableCell>1</TableCell>
-            <TableCell>Pass at first Attempt</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+              Pass at first Attempt
+            </TableCell>
             <TableCell>
-              <TableRow>Students</TableRow>
-              <TableRow>Percentage</TableRow>
+              <TableRow style={{ fontSize: "18px" }}>Students</TableRow>
+              <TableRow style={{ fontSize: "18px" }}>Percentage</TableRow>
             </TableCell>
             {rows.map((row) => (
               <CustomTableCell
@@ -287,10 +283,12 @@ function EditableTable(props) {
 
           <TableRow>
             <TableCell>1</TableCell>
-            <TableCell>Pass at Second Attempt</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+              Pass at Second Attempt
+            </TableCell>
             <TableCell>
-              <TableRow>Students</TableRow>
-              <TableRow>Percentage</TableRow>
+              <TableRow style={{ fontSize: "18px" }}>Students</TableRow>
+              <TableRow style={{ fontSize: "18px" }}>Percentage</TableRow>
             </TableCell>
             {rows.map((row) => (
               <CustomTableCell
@@ -306,12 +304,12 @@ function EditableTable(props) {
 
           <TableRow>
             <TableCell>1</TableCell>
-            <TableCell>
+            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
               Pass at second attempt in order to improve GPA
             </TableCell>
             <TableCell>
-              <TableRow>Students</TableRow>
-              <TableRow>Percentage</TableRow>
+              <TableRow style={{ fontSize: "18px" }}>Students</TableRow>
+              <TableRow style={{ fontSize: "18px" }}>Percentage</TableRow>
             </TableCell>
             {rows.map((row) => (
               <CustomTableCell

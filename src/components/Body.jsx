@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import DropDownMenu from "./DropDownMenu";
 import Tabs from "./Tabs";
+import TemporaryDrawer from "./Drawer";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
@@ -26,12 +28,13 @@ function Body() {
   const classes = useStyles();
 
   const faculties = [
-    "Computer Science",
-    "Political Science",
+    "Informatics & Computer Science",
+    "Engineering",
     "Business Administration",
+    "Dentistry",
   ];
-  const programTitles = ["Example 1", "Example 2", "Example 3"];
-  const year = ["16", "17", "18"];
+  const programTitles = ["Masters in WebScience", "Marketing", "Renewable"];
+  const year = ["2016/2017", "2017/2018", "2018/2019"];
   const [show, setShow] = useState(false);
   const [requiredInfo, setRequiredInfo] = useState({
     faculty: "",
@@ -101,7 +104,7 @@ function Body() {
         </Button>
       </div>
 
-      {show === false ? <Tabs /> : null}
+      <TemporaryDrawer />
     </div>
   );
 }

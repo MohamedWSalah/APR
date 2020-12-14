@@ -1,4 +1,3 @@
-//This component was used in the tabs with "issue" and "Action" Headers Only
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
@@ -8,11 +7,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
 import Paper from "@material-ui/core/Paper";
-import IconButton from "@material-ui/core/IconButton";
-// Icons
-import EditIcon from "@material-ui/icons/EditOutlined";
-import DoneIcon from "@material-ui/icons/DoneAllTwoTone";
-import RevertIcon from "@material-ui/icons/NotInterestedOutlined";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -58,6 +52,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+// const createData = (
+//   batch,
+//   yearofEntry,
+//   bScCertificate,
+//   totalNewStudentsPerSemester,
+//   totalNewStudentsPerYear
+// ) => ({
+//   id: batch.replace(" ", "_"),
+//   batch,
+//   yearofEntry,
+//   bScCertificate,
+//   totalNewStudentsPerSemester,
+//   totalNewStudentsPerYear,
+//   isEditMode: false,
+// });
+
 const CustomTableCell = ({ row, name, onChange }) => {
   const classes = useStyles();
   const { isEditMode } = row;
@@ -78,12 +88,30 @@ const CustomTableCell = ({ row, name, onChange }) => {
   );
 };
 
-function EditableTable(props) {
-  let counter = 0;
-  const { texts, numbers, dataToBeDisplayed } = props;
-
-  const [rows, setRows] = React.useState(dataToBeDisplayed);
-
+function EditableTable() {
+  const [rows, setRows] = React.useState([
+    {
+      id: 1,
+      batch: "1",
+      yearOfEntry: "S1 18/19",
+      numberOfWithdrawls: 10,
+      reasonsForWithdrawl: "Example 1.....",
+    },
+    {
+      id: 2,
+      batch: "2",
+      yearOfEntry: "S1 17/18",
+      numberOfWithdrawls: 15,
+      reasonsForWithdrawl: "Example 2.....",
+    },
+    {
+      id: 3,
+      batch: "3",
+      yearOfEntry: "S2 16/17",
+      numberOfWithdrawls: 7,
+      reasonsForWithdrawl: "Example 3.....",
+    },
+  ]);
   const [previous, setPrevious] = React.useState({});
   const classes = useStyles();
 
@@ -139,63 +167,33 @@ function EditableTable(props) {
               align="left"
             ></TableCell>
             <TableCell className={classes.tableHeaderEmpty} align="left">
-              Issue
+              Batch
             </TableCell>
             <TableCell className={classes.tableHeaderEmpty} align="left">
-              Action
+              Year
+            </TableCell>
+            <TableCell className={classes.tableHeaderText} align="left">
+              Number of Withdrawls
+            </TableCell>
+            <TableCell className={classes.tableHeaderText} align="left">
+              Reasons for Withdrawl
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
-            <React.Fragment key={row.id}>
-              {numbers ? (
-                numbers.includes(rows.indexOf(row)) ? (
-                  <TableRow>
-                    <TableCell
-                      colSpan={3}
-                      className={classes.selectTableCell}
-                      style={{
-                        fontWeight: "bold",
-                        backgroundColor: "#f7f7f7",
-                        fontSize: "1.5vw",
-                      }}
-                    >
-                      {texts[counter++]}
-                    </TableCell>
-                  </TableRow>
-                ) : null
-              ) : null}
-              <TableRow key={row.id}>
-                <TableCell className={classes.selectTableCell}>
-                  {row.isEditMode ? (
-                    <>
-                      <IconButton
-                        aria-label="done"
-                        onClick={() => onToggleEditMode(row.id)}
-                      >
-                        <DoneIcon />
-                      </IconButton>
-                      <IconButton
-                        aria-label="revert"
-                        onClick={() => onRevert(row.id)}
-                      >
-                        <RevertIcon />
-                      </IconButton>
-                    </>
-                  ) : (
-                    <IconButton
-                      aria-label="delete"
-                      onClick={() => onToggleEditMode(row.id)}
-                    >
-                      <EditIcon />
-                    </IconButton>
-                  )}
-                </TableCell>
-                <CustomTableCell {...{ row, name: "issue", onChange }} />
-                <CustomTableCell {...{ row, name: "action", onChange }} />
-              </TableRow>
-            </React.Fragment>
+            <TableRow key={row.id}>
+              <TableCell>*</TableCell>
+
+              <CustomTableCell {...{ row, name: "batch", onChange }} />
+              <CustomTableCell {...{ row, name: "yearOfEntry", onChange }} />
+              <CustomTableCell
+                {...{ row, name: "numberOfWithdrawls", onChange }}
+              />
+              <CustomTableCell
+                {...{ row, name: "reasonsForWithdrawl", onChange }}
+              />
+            </TableRow>
           ))}
         </TableBody>
       </Table>

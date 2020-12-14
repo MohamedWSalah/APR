@@ -15,7 +15,7 @@ function AboveTableText(props) {
         style={{
           backgroundColor: "#fff",
           padding: "0 10px",
-          fontSize: "3.5vw",
+          fontSize: "2.6vw",
         }}
       >
         {headerText}

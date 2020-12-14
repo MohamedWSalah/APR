@@ -7,11 +7,6 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
 import Paper from "@material-ui/core/Paper";
-import IconButton from "@material-ui/core/IconButton";
-// Icons
-import EditIcon from "@material-ui/icons/EditOutlined";
-import DoneIcon from "@material-ui/icons/DoneAllTwoTone";
-import RevertIcon from "@material-ui/icons/NotInterestedOutlined";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     width: 60,
   },
   tableCell: {
-    width: "30vw",
+    maxWidth: "30vw",
     height: 40,
     textAlign: "center",
     fontSize: "25px",
@@ -74,9 +69,10 @@ const useStyles = makeStyles((theme) => ({
 //   isEditMode: false,
 // });
 
-const CustomTableCell = ({ row, name, onChange }) => {
+const CustomTableCell = ({ row, name, totalStud, onChange }) => {
   const classes = useStyles();
   const { isEditMode } = row;
+  const percentage = ((row[name] * 100) / row[totalStud]).toFixed(1);
   return (
     <TableCell align="left" className={classes.tableCell}>
       {isEditMode ? (
@@ -88,7 +84,7 @@ const CustomTableCell = ({ row, name, onChange }) => {
           className={classes.input}
         />
       ) : (
-        row[name]
+        <>{totalStud ? row[name] + `\n (${percentage}%)` : row[name]}</>
       )}
     </TableCell>
   );
@@ -96,39 +92,32 @@ const CustomTableCell = ({ row, name, onChange }) => {
 
 function EditableTable() {
   const [rows, setRows] = React.useState([
-    // createData("1", 159, 6.0, 24, 4.0),
-    // createData("2", 237, 9.0, 37, 4.3),
-    // createData("3", 262, 16.0, 24, 6.0),
-    // createData("3", 262, 16.0, 24, 6.0),
-    // createData("3", 262, 16.0, 24, 6.0),
-    // createData("3", 262, 16.0, 24, 6.0),
     {
       id: 1,
-      yearOfEntry: "S1 19/20",
-      TOEFL: "4",
-      IELTS: "4",
-      BUEGraduate: "4",
+      totalNumberOfStudents: 100,
+      entryStudents: 20,
+      continued: 10,
+      enhancingModules: 20,
+      repeatingModules: 5,
+      totalProgressingToThesis: 9,
     },
     {
       id: 2,
-      yearOfEntry: "S1 18/19",
-      TOEFL: "4",
-      IELTS: "0",
-      BUEGraduate: "4",
+      totalNumberOfStudents: 70,
+      entryStudents: 5,
+      continued: 9,
+      enhancingModules: 2,
+      repeatingModules: 5,
+      totalProgressingToThesis: 7,
     },
     {
       id: 3,
-      yearOfEntry: "S2 17/18",
-      TOEFL: "0",
-      IELTS: "0",
-      BUEGraduate: "0",
-    },
-    {
-      id: 4,
-      yearOfEntry: "S2 16/17",
-      TOEFL: "4",
-      IELTS: "4",
-      BUEGraduate: "4",
+      totalNumberOfStudents: 50,
+      entryStudents: 9,
+      continued: 6,
+      enhancingModules: 7,
+      repeatingModules: 5,
+      totalProgressingToThesis: 3,
     },
   ]);
   const [previous, setPrevious] = React.useState({});
@@ -186,76 +175,123 @@ function EditableTable() {
               className={classes.tableHeaderText}
               align="left"
               style={{ paddingBottom: "10px" }}
-            ></TableCell>
-
-            <TableCell
-              colSpan={3}
-              className={classes.tableHeaderText}
-              align="left"
             >
-              English Language Exam
+              Item
             </TableCell>
-          </TableRow>
 
-          <TableRow style={{ backgroundColor: "#AF0000" }}>
-            <TableCell
-              className={classes.tableHeaderEmpty}
-              align="left"
-            ></TableCell>
+            <TableCell className={classes.tableHeaderText} align="left">
+              2018/2019
+            </TableCell>
 
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Year of Entry
-            </TableCell>
             <TableCell className={classes.tableHeaderText} align="left">
-              TOEFL
+              2017/2018
             </TableCell>
+
             <TableCell className={classes.tableHeaderText} align="left">
-              IELTS
-            </TableCell>
-            <TableCell className={classes.tableHeaderText} align="left">
-              BUE Graduate
+              2016/2017
             </TableCell>
           </TableRow>
         </TableHead>
+
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell className={classes.selectTableCell}>
-                {row.isEditMode ? (
-                  <>
-                    <IconButton
-                      aria-label="done"
-                      onClick={() => onToggleEditMode(row.id)}
-                    >
-                      <DoneIcon />
-                    </IconButton>
-                    <IconButton
-                      aria-label="revert"
-                      onClick={() => onRevert(row.id)}
-                    >
-                      <RevertIcon />
-                    </IconButton>
-                  </>
-                ) : (
-                  <IconButton
-                    aria-label="delete"
-                    onClick={() => onToggleEditMode(row.id)}
-                  >
-                    <EditIcon />
-                  </IconButton>
-                )}
-              </TableCell>
-              <CustomTableCell {...{ row, name: "yearOfEntry", onChange }} />
-              <CustomTableCell {...{ row, name: "TOEFL", onChange }} />
-              <CustomTableCell {...{ row, name: "IELTS", onChange }} />
-              <CustomTableCell {...{ row, name: "BUEGraduate", onChange }} />
-            </TableRow>
-          ))}
+          <TableRow>
+            <TableCell>1</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+              Total Number of Students
+            </TableCell>
+            {rows.map((row) => (
+              <CustomTableCell
+                {...{ row, name: "totalNumberOfStudents", onChange }}
+              />
+            ))}
+          </TableRow>
+
+          <TableRow>
+            <TableCell>1</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+              Entry Students
+            </TableCell>
+
+            {rows.map((row) => (
+              <CustomTableCell
+                {...{
+                  row,
+                  name: "entryStudents",
+                  totalStud: "totalNumberOfStudents",
+                  onChange,
+                }}
+              />
+            ))}
+          </TableRow>
+
+          <TableRow>
+            <TableCell>1</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+              Continued
+            </TableCell>
+
+            {rows.map((row) => (
+              <CustomTableCell
+                {...{
+                  row,
+                  name: "continued",
+                  totalStud: "totalNumberOfStudents",
+                  onChange,
+                }}
+              />
+            ))}
+          </TableRow>
+
+          <TableRow>
+            <TableCell>1</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+              Enhancing Modules
+            </TableCell>
+            {rows.map((row) => (
+              <CustomTableCell
+                {...{
+                  row,
+                  name: "enhancingModules",
+                  totalStud: "totalNumberOfStudents",
+                  onChange,
+                }}
+              />
+            ))}
+          </TableRow>
+          <TableRow>
+            <TableCell>1</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+              Repeating Modules
+            </TableCell>
+            {rows.map((row) => (
+              <CustomTableCell
+                {...{
+                  row,
+                  name: "repeatingModules",
+                  totalStud: "totalNumberOfStudents",
+                  onChange,
+                }}
+              />
+            ))}
+          </TableRow>
+          <TableRow>
+            <TableCell>1</TableCell>
+            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+              Total progressing to thesis
+            </TableCell>
+            {rows.map((row) => (
+              <CustomTableCell
+                {...{
+                  row,
+                  name: "totalProgressingToThesis",
+                  totalStud: "totalNumberOfStudents",
+                  onChange,
+                }}
+              />
+            ))}
+          </TableRow>
         </TableBody>
       </Table>
-      {/*<Button variant="contained" onClick={() => console.log(rows)}>
-        print state (TEST ONLY)
-                </Button>*/}
     </Paper>
   );
 }
