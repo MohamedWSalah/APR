@@ -7,6 +7,8 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
 import Paper from "@material-ui/core/Paper";
+import AboveTableText from "../../../AboveTableText";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -154,42 +156,45 @@ function EditableTable() {
   };
 
   return (
-    <Paper className={classes.root}>
-      <Table className={classes.table} aria-label="caption table">
-        <TableHead>
-          <TableRow style={{ backgroundColor: "#AF0000" }}>
-            <TableCell
-              className={classes.tableHeaderEmpty}
-              align="left"
-            ></TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Year of Graduation
-            </TableCell>
-            <TableCell className={classes.tableHeaderText} align="left">
-              Number of Students
-            </TableCell>
-            <TableCell className={classes.tableHeaderText} align="left">
-              Degree Sought
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>*</TableCell>
-              <CustomTableCell {...{ row, name: "yearOfEntry", onChange }} />
-              <CustomTableCell
-                {...{ row, name: "numberOfStudents", onChange }}
-              />
-              <CustomTableCell {...{ row, name: "degreeSought", onChange }} />
+    <>
+      <AboveTableText headerText={"Degree Awarded"} />
+      <Paper className={classes.root}>
+        <Table className={classes.table} aria-label="caption table">
+          <TableHead>
+            <TableRow style={{ backgroundColor: "#AF0000" }}>
+              <TableCell
+                className={classes.tableHeaderEmpty}
+                align="left"
+              ></TableCell>
+              <TableCell className={classes.tableHeaderEmpty} align="left">
+                Year of Graduation
+              </TableCell>
+              <TableCell className={classes.tableHeaderText} align="left">
+                Number of Students
+              </TableCell>
+              <TableCell className={classes.tableHeaderText} align="left">
+                Degree Sought
+              </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      {/*<Button variant="contained" onClick={() => console.log(rows)}>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell>*</TableCell>
+                <CustomTableCell {...{ row, name: "yearOfEntry", onChange }} />
+                <CustomTableCell
+                  {...{ row, name: "numberOfStudents", onChange }}
+                />
+                <CustomTableCell {...{ row, name: "degreeSought", onChange }} />
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        {/*<Button variant="contained" onClick={() => console.log(rows)}>
         print state (TEST ONLY)
                 </Button>*/}
-    </Paper>
+      </Paper>
+    </>
   );
 }
 

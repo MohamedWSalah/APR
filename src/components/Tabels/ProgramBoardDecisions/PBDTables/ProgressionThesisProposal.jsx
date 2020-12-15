@@ -7,6 +7,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
 import Paper from "@material-ui/core/Paper";
+import AboveTableText from "../../../AboveTableText";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -174,67 +175,70 @@ function EditableTable() {
   };
 
   return (
-    <Paper className={classes.root}>
-      <Table className={classes.table} aria-label="caption table">
-        <TableHead>
-          <TableRow style={{ backgroundColor: "#AF0000" }}>
-            <TableCell
-              className={classes.tableHeaderEmpty}
-              align="left"
-            ></TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Batch
-            </TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Year of Entry to thesis propsal
-            </TableCell>
-            <TableCell className={classes.tableHeaderText} align="left">
-              Total No. in program
-            </TableCell>
-            <TableCell className={classes.tableHeaderText} align="left">
-              Students qualified
-            </TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Qualified Progression %
-            </TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Students submitted propsals
-            </TableCell>
-            <TableCell className={classes.tableHeaderEmpty} align="left">
-              Submitted progression %
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>*</TableCell>
-
-              <CustomTableCell {...{ row, name: "batch", onChange }} />
-              <CustomTableCell {...{ row, name: "yearOfEntry", onChange }} />
-              <CustomTableCell
-                {...{ row, name: "totalNoInProgram", onChange }}
-              />
-              <CustomTableCell
-                {...{ row, name: "studentsQualified", onChange }}
-              />
-              <CustomTableCell
-                {...{ row, name: "qualifiedProgressionPerc", onChange }}
-              />
-              <CustomTableCell
-                {...{ row, name: "studentsSubmittedProposal", onChange }}
-              />
-              <CustomTableCell
-                {...{ row, name: "submittedProgreesionPerc", onChange }}
-              />
+    <>
+      <AboveTableText headerText={"Progression of thesis proposal"} />
+      <Paper className={classes.root}>
+        <Table className={classes.table} aria-label="caption table">
+          <TableHead>
+            <TableRow style={{ backgroundColor: "#AF0000" }}>
+              <TableCell
+                className={classes.tableHeaderEmpty}
+                align="left"
+              ></TableCell>
+              <TableCell className={classes.tableHeaderEmpty} align="left">
+                Batch
+              </TableCell>
+              <TableCell className={classes.tableHeaderEmpty} align="left">
+                Year of Entry to thesis propsal
+              </TableCell>
+              <TableCell className={classes.tableHeaderText} align="left">
+                Total No. in program
+              </TableCell>
+              <TableCell className={classes.tableHeaderText} align="left">
+                Students qualified
+              </TableCell>
+              <TableCell className={classes.tableHeaderEmpty} align="left">
+                Qualified Progression %
+              </TableCell>
+              <TableCell className={classes.tableHeaderEmpty} align="left">
+                Students submitted propsals
+              </TableCell>
+              <TableCell className={classes.tableHeaderEmpty} align="left">
+                Submitted progression %
+              </TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      {/*<Button variant="contained" onClick={() => console.log(rows)}>
+          </TableHead>
+          <TableBody>
+            {rows.map((row) => (
+              <TableRow key={row.id}>
+                <TableCell>*</TableCell>
+
+                <CustomTableCell {...{ row, name: "batch", onChange }} />
+                <CustomTableCell {...{ row, name: "yearOfEntry", onChange }} />
+                <CustomTableCell
+                  {...{ row, name: "totalNoInProgram", onChange }}
+                />
+                <CustomTableCell
+                  {...{ row, name: "studentsQualified", onChange }}
+                />
+                <CustomTableCell
+                  {...{ row, name: "qualifiedProgressionPerc", onChange }}
+                />
+                <CustomTableCell
+                  {...{ row, name: "studentsSubmittedProposal", onChange }}
+                />
+                <CustomTableCell
+                  {...{ row, name: "submittedProgreesionPerc", onChange }}
+                />
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        {/*<Button variant="contained" onClick={() => console.log(rows)}>
         print state (TEST ONLY)
                 </Button>*/}
-    </Paper>
+      </Paper>
+    </>
   );
 }
 

@@ -7,6 +7,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
 import Paper from "@material-ui/core/Paper";
+import AboveTableText from "../../../AboveTableText";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -196,135 +197,138 @@ function EditableTable(props) {
   };
 
   return (
-    <Paper className={classes.root}>
-      <Table className={classes.table} aria-label="caption table">
-        <TableHead>
-          <TableRow style={{ backgroundColor: "#AF0000" }}>
-            <TableCell className={classes.tableHeaderText} align="left" />
-            <TableCell
-              className={classes.tableHeaderText}
-              align="left"
-              style={{ paddingBottom: "10px" }}
-              colSpan={2}
-            ></TableCell>
-            <TableCell
-              className={classes.tableHeaderText}
-              align="left"
-              colSpan={semesterOneCols}
-            >
-              Semester 1
-            </TableCell>
-            <TableCell
-              colSpan={semesterTwoCols}
-              className={classes.tableHeaderText}
-              align="left"
-            >
-              Semester 2
-            </TableCell>
-          </TableRow>
-
-          <TableRow style={{ backgroundColor: "#AF0000" }}>
-            <TableCell
-              className={classes.tableHeaderEmpty}
-              align="left"
-            ></TableCell>
-            <TableCell
-              colSpan={2}
-              rowSpan={2}
-              className={classes.tableHeaderEmpty}
-              align="left"
-            >
-              Module Code and Title
-            </TableCell>
-            {rows.map((row) => (
-              <TableCell className={classes.tableHeaderText} align="left">
-                {row.module}
+    <>
+      <AboveTableText headerText={"Core modules"} />
+      <Paper className={classes.root}>
+        <Table className={classes.table} aria-label="caption table">
+          <TableHead>
+            <TableRow style={{ backgroundColor: "#AF0000" }}>
+              <TableCell className={classes.tableHeaderText} align="left" />
+              <TableCell
+                className={classes.tableHeaderText}
+                align="left"
+                style={{ paddingBottom: "10px" }}
+                colSpan={2}
+              ></TableCell>
+              <TableCell
+                className={classes.tableHeaderText}
+                align="left"
+                colSpan={semesterOneCols}
+              >
+                Semester 1
               </TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
+              <TableCell
+                colSpan={semesterTwoCols}
+                className={classes.tableHeaderText}
+                align="left"
+              >
+                Semester 2
+              </TableCell>
+            </TableRow>
 
-        <TableBody>
-          <TableRow>
-            <TableCell>1</TableCell>
-            <TableCell
-              colSpan={2}
-              style={{ fontWeight: "bold", fontSize: "20px" }}
-            >
-              Total Number of Students
-            </TableCell>
-            {rows.map((row) => (
-              <CustomTableCell
-                {...{ row, name: "totalNumberOfStudents", onChange }}
-              />
-            ))}
-          </TableRow>
+            <TableRow style={{ backgroundColor: "#AF0000" }}>
+              <TableCell
+                className={classes.tableHeaderEmpty}
+                align="left"
+              ></TableCell>
+              <TableCell
+                colSpan={2}
+                rowSpan={2}
+                className={classes.tableHeaderEmpty}
+                align="left"
+              >
+                Module Code and Title
+              </TableCell>
+              {rows.map((row) => (
+                <TableCell className={classes.tableHeaderText} align="left">
+                  {row.module}
+                </TableCell>
+              ))}
+            </TableRow>
+          </TableHead>
 
-          <TableRow>
-            <TableCell>1</TableCell>
-            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
-              Pass at first Attempt
-            </TableCell>
-            <TableCell>
-              <TableRow style={{ fontSize: "18px" }}>Students</TableRow>
-              <TableRow style={{ fontSize: "18px" }}>Percentage</TableRow>
-            </TableCell>
-            {rows.map((row) => (
-              <CustomTableCell
-                {...{
-                  row,
-                  name: "studentsFirstAttempt",
-                  totalStud: "totalNumberOfStudents",
-                  onChange,
-                }}
-              />
-            ))}
-          </TableRow>
+          <TableBody>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell
+                colSpan={2}
+                style={{ fontWeight: "bold", fontSize: "20px" }}
+              >
+                Total Number of Students
+              </TableCell>
+              {rows.map((row) => (
+                <CustomTableCell
+                  {...{ row, name: "totalNumberOfStudents", onChange }}
+                />
+              ))}
+            </TableRow>
 
-          <TableRow>
-            <TableCell>1</TableCell>
-            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
-              Pass at Second Attempt
-            </TableCell>
-            <TableCell>
-              <TableRow style={{ fontSize: "18px" }}>Students</TableRow>
-              <TableRow style={{ fontSize: "18px" }}>Percentage</TableRow>
-            </TableCell>
-            {rows.map((row) => (
-              <CustomTableCell
-                {...{
-                  row,
-                  name: "studentsSecondAttempt",
-                  totalStud: "totalNumberOfStudents",
-                  onChange,
-                }}
-              />
-            ))}
-          </TableRow>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+                Pass at first Attempt
+              </TableCell>
+              <TableCell>
+                <TableRow style={{ fontSize: "18px" }}>Students</TableRow>
+                <TableRow style={{ fontSize: "18px" }}>Percentage</TableRow>
+              </TableCell>
+              {rows.map((row) => (
+                <CustomTableCell
+                  {...{
+                    row,
+                    name: "studentsFirstAttempt",
+                    totalStud: "totalNumberOfStudents",
+                    onChange,
+                  }}
+                />
+              ))}
+            </TableRow>
 
-          <TableRow>
-            <TableCell>1</TableCell>
-            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
-              Pass at second attempt in order to improve GPA
-            </TableCell>
-            <TableCell>
-              <TableRow style={{ fontSize: "18px" }}>Students</TableRow>
-              <TableRow style={{ fontSize: "18px" }}>Percentage</TableRow>
-            </TableCell>
-            {rows.map((row) => (
-              <CustomTableCell
-                {...{
-                  row,
-                  name: "studentPassImprove",
-                  totalStud: "totalNumberOfStudents",
-                  onChange,
-                }}
-              />
-            ))}
-          </TableRow>
-        </TableBody>
-      </Table>
-    </Paper>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+                Pass at Second Attempt
+              </TableCell>
+              <TableCell>
+                <TableRow style={{ fontSize: "18px" }}>Students</TableRow>
+                <TableRow style={{ fontSize: "18px" }}>Percentage</TableRow>
+              </TableCell>
+              {rows.map((row) => (
+                <CustomTableCell
+                  {...{
+                    row,
+                    name: "studentsSecondAttempt",
+                    totalStud: "totalNumberOfStudents",
+                    onChange,
+                  }}
+                />
+              ))}
+            </TableRow>
+
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+                Pass at second attempt in order to improve GPA
+              </TableCell>
+              <TableCell>
+                <TableRow style={{ fontSize: "18px" }}>Students</TableRow>
+                <TableRow style={{ fontSize: "18px" }}>Percentage</TableRow>
+              </TableCell>
+              {rows.map((row) => (
+                <CustomTableCell
+                  {...{
+                    row,
+                    name: "studentPassImprove",
+                    totalStud: "totalNumberOfStudents",
+                    onChange,
+                  }}
+                />
+              ))}
+            </TableRow>
+          </TableBody>
+        </Table>
+      </Paper>
+    </>
   );
 }
 

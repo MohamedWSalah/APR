@@ -104,7 +104,7 @@ function Body() {
         </Button>
       </div>
 
-      <TemporaryDrawer />
+      {show === true ? <TemporaryDrawer /> : null}
     </div>
   );
 }

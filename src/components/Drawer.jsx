@@ -20,23 +20,50 @@ import ModuleSpecifications from "./Tabels/ModuleSpecifications/ModuleSpecificat
 import StaffBreakDownForTheCurrentAY from "./Tabels/StaffBreakDownForTheCurrentAY/StaffBreakDownForTheCurrentAY";
 import StudentProfileAndMarketing from "./Tabels/StudentProfileAndMarketing/StudentProfileAndMarketing";
 import SupportingDoc from "./Tabels/SupportingDocumentation/SupportingDocumentation";
+
 import PBDMain from "./Tabels/ProgramBoardDecisions/PBDMain";
+import SummaryProbationPeriod from "./Tabels/ProgramBoardDecisions/PBDTables/SummaryProbationPeriod";
+import ProgressionThesisPropsal from "./Tabels/ProgramBoardDecisions/PBDTables/ProgressionThesisProposal";
+import VoluntaryWithdrawls from "./Tabels/ProgramBoardDecisions/PBDTables/VoluntaryWithdrawls";
+import ExpectedToGraduate from "./Tabels/ProgramBoardDecisions/PBDTables/ExpectedToGraduate";
+import DegreeAwarded from "./Tabels/ProgramBoardDecisions/PBDTables/DegreeAwarded";
+import CoreModulesTable from "./Tabels/ProgramBoardDecisions/PBDTables/CoreModulesTable";
+
+import ExpandLess from "@material-ui/icons/ExpandLess";
+import ExpandMore from "@material-ui/icons/ExpandMore";
+import Collapse from "@material-ui/core/Collapse";
 
 import svgTest from "./half2.svg";
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   list: {
     width: 250,
   },
   fullList: {
     width: "auto",
   },
-});
+  leftSideMenuButton: {
+    position: "fixed",
+    left: "0px",
+    top: "40%",
+    zIndex: 100,
+    opacity: "0.9",
+    "&:hover": {
+      cursor: "pointer",
+    },
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
+}));
 
 export default function TemporaryDrawer() {
   const classes = useStyles();
   const [state, setState] = React.useState({
     left: false,
   });
+  const [open, setOpen] = React.useState(true);
+
+  const handleClick = () => {};
 
   const [value, setValue] = React.useState("Entry for the AYs");
   const TabsInfo = [
@@ -53,6 +80,15 @@ export default function TemporaryDrawer() {
     "Staff breakdown for the current AY",
     "Student profile & marketing",
     "Support documentation",
+  ];
+  const PBDTabs = [
+    "Core Modules",
+    "Optional Modules",
+    "Summary of the probation",
+    "Progression to Thesis proposal",
+    "Voluntary Withdrawls and/or Offical Dismissed",
+    "Expected to be graduated",
+    "Degrees awarded",
   ];
   const renderTabs = () => {
     return value === "Entry for the AYs" ? (
@@ -81,37 +117,75 @@ export default function TemporaryDrawer() {
       <StudentProfileAndMarketing />
     ) : value === "Support documentation" ? (
       <SupportingDoc />
+    ) : value === "Core Modules" ? (
+      <CoreModulesTable />
+    ) : value === "Optional Modules" ? (
+      <CoreModulesTable />
+    ) : value === "Summary of the probation" ? (
+      <SummaryProbationPeriod />
+    ) : value === "Progression to Thesis proposal" ? (
+      <ProgressionThesisPropsal />
+    ) : value === "Voluntary Withdrawls and/or Offical Dismissed" ? (
+      <VoluntaryWithdrawls />
+    ) : value === "Expected to be graduated" ? (
+      <ExpectedToGraduate />
+    ) : value === "Degrees awarded" ? (
+      <DegreeAwarded />
     ) : null;
   };
   const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
+    if (event.type === "keydown") {
       return;
     }
-
     setState({ ...state, [anchor]: open });
   };
 
   const list = (anchor) => (
-    <div
-      className={clsx(classes.list, {
-        [classes.fullList]: anchor === "top" || anchor === "bottom",
-      })}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
+    <div>
       <Divider />
       <List>
         {TabsInfo.map((text, index) =>
           value === text ? (
             <>
               <ListItem style={{ backgroundColor: "grey" }} button key={text}>
-                <ListItemText primary={text} onClick={() => setValue(text)} />
+                <ListItemText
+                  key={text}
+                  primary={text}
+                  onClick={() => setValue(text)}
+                />
               </ListItem>
               <Divider />
+            </>
+          ) : text === "Program Board Decisions" ? (
+            <>
+              <ListItem button key={text} onClick={() => setOpen(!open)}>
+                <ListItemText primary={text} />
+                {open ? <ExpandLess /> : <ExpandMore />}
+              </ListItem>
+              <Divider />
+              <Collapse in={open} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  {PBDTabs.map((text) => (
+                    <>
+                      <ListItem
+                        key={text}
+                        button
+                        className={classes.nested}
+                        style={
+                          value === text ? { backgroundColor: "grey" } : null
+                        }
+                      >
+                        <ListItemText
+                          primary={text}
+                          key={text}
+                          onClick={() => setValue(text)}
+                        />
+                      </ListItem>
+                      <Divider />
+                    </>
+                  ))}
+                </List>
+              </Collapse>
             </>
           ) : (
             <>
@@ -138,16 +212,11 @@ export default function TemporaryDrawer() {
       {["left"].map((anchor) => (
         <React.Fragment key={anchor}>
           <img
+            draggable
+            className={classes.leftSideMenuButton}
             src={svgTest}
             alt=""
             onClick={toggleDrawer(anchor, true)}
-            style={{
-              position: "fixed",
-              left: "0px",
-              top: "40%",
-              zIndex: 100,
-              opacity: "0.9",
-            }}
           />
           <Drawer
             key={anchor}

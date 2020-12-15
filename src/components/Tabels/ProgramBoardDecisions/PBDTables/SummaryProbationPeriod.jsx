@@ -7,6 +7,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
 import Paper from "@material-ui/core/Paper";
+import AboveTableText from "../../../AboveTableText";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -166,133 +167,136 @@ function EditableTable() {
   };
 
   return (
-    <Paper className={classes.root}>
-      <Table className={classes.table} aria-label="caption table">
-        <TableHead>
-          <TableRow style={{ backgroundColor: "#AF0000" }}>
-            <TableCell className={classes.tableHeaderText} align="left" />
-            <TableCell
-              className={classes.tableHeaderText}
-              align="left"
-              style={{ paddingBottom: "10px" }}
-            >
-              Item
-            </TableCell>
+    <>
+      <AboveTableText headerText={"Summary probation period"} />
+      <Paper className={classes.root}>
+        <Table className={classes.table} aria-label="caption table">
+          <TableHead>
+            <TableRow style={{ backgroundColor: "#AF0000" }}>
+              <TableCell className={classes.tableHeaderText} align="left" />
+              <TableCell
+                className={classes.tableHeaderText}
+                align="left"
+                style={{ paddingBottom: "10px" }}
+              >
+                Item
+              </TableCell>
 
-            <TableCell className={classes.tableHeaderText} align="left">
-              2018/2019
-            </TableCell>
+              <TableCell className={classes.tableHeaderText} align="left">
+                2018/2019
+              </TableCell>
 
-            <TableCell className={classes.tableHeaderText} align="left">
-              2017/2018
-            </TableCell>
+              <TableCell className={classes.tableHeaderText} align="left">
+                2017/2018
+              </TableCell>
 
-            <TableCell className={classes.tableHeaderText} align="left">
-              2016/2017
-            </TableCell>
-          </TableRow>
-        </TableHead>
+              <TableCell className={classes.tableHeaderText} align="left">
+                2016/2017
+              </TableCell>
+            </TableRow>
+          </TableHead>
 
-        <TableBody>
-          <TableRow>
-            <TableCell>1</TableCell>
-            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
-              Total Number of Students
-            </TableCell>
-            {rows.map((row) => (
-              <CustomTableCell
-                {...{ row, name: "totalNumberOfStudents", onChange }}
-              />
-            ))}
-          </TableRow>
+          <TableBody>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+                Total Number of Students
+              </TableCell>
+              {rows.map((row) => (
+                <CustomTableCell
+                  {...{ row, name: "totalNumberOfStudents", onChange }}
+                />
+              ))}
+            </TableRow>
 
-          <TableRow>
-            <TableCell>1</TableCell>
-            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
-              Entry Students
-            </TableCell>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+                Entry Students
+              </TableCell>
 
-            {rows.map((row) => (
-              <CustomTableCell
-                {...{
-                  row,
-                  name: "entryStudents",
-                  totalStud: "totalNumberOfStudents",
-                  onChange,
-                }}
-              />
-            ))}
-          </TableRow>
+              {rows.map((row) => (
+                <CustomTableCell
+                  {...{
+                    row,
+                    name: "entryStudents",
+                    totalStud: "totalNumberOfStudents",
+                    onChange,
+                  }}
+                />
+              ))}
+            </TableRow>
 
-          <TableRow>
-            <TableCell>1</TableCell>
-            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
-              Continued
-            </TableCell>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+                Continued
+              </TableCell>
 
-            {rows.map((row) => (
-              <CustomTableCell
-                {...{
-                  row,
-                  name: "continued",
-                  totalStud: "totalNumberOfStudents",
-                  onChange,
-                }}
-              />
-            ))}
-          </TableRow>
+              {rows.map((row) => (
+                <CustomTableCell
+                  {...{
+                    row,
+                    name: "continued",
+                    totalStud: "totalNumberOfStudents",
+                    onChange,
+                  }}
+                />
+              ))}
+            </TableRow>
 
-          <TableRow>
-            <TableCell>1</TableCell>
-            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
-              Enhancing Modules
-            </TableCell>
-            {rows.map((row) => (
-              <CustomTableCell
-                {...{
-                  row,
-                  name: "enhancingModules",
-                  totalStud: "totalNumberOfStudents",
-                  onChange,
-                }}
-              />
-            ))}
-          </TableRow>
-          <TableRow>
-            <TableCell>1</TableCell>
-            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
-              Repeating Modules
-            </TableCell>
-            {rows.map((row) => (
-              <CustomTableCell
-                {...{
-                  row,
-                  name: "repeatingModules",
-                  totalStud: "totalNumberOfStudents",
-                  onChange,
-                }}
-              />
-            ))}
-          </TableRow>
-          <TableRow>
-            <TableCell>1</TableCell>
-            <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
-              Total progressing to thesis
-            </TableCell>
-            {rows.map((row) => (
-              <CustomTableCell
-                {...{
-                  row,
-                  name: "totalProgressingToThesis",
-                  totalStud: "totalNumberOfStudents",
-                  onChange,
-                }}
-              />
-            ))}
-          </TableRow>
-        </TableBody>
-      </Table>
-    </Paper>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+                Enhancing Modules
+              </TableCell>
+              {rows.map((row) => (
+                <CustomTableCell
+                  {...{
+                    row,
+                    name: "enhancingModules",
+                    totalStud: "totalNumberOfStudents",
+                    onChange,
+                  }}
+                />
+              ))}
+            </TableRow>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+                Repeating Modules
+              </TableCell>
+              {rows.map((row) => (
+                <CustomTableCell
+                  {...{
+                    row,
+                    name: "repeatingModules",
+                    totalStud: "totalNumberOfStudents",
+                    onChange,
+                  }}
+                />
+              ))}
+            </TableRow>
+            <TableRow>
+              <TableCell>1</TableCell>
+              <TableCell style={{ fontWeight: "bold", fontSize: "18px" }}>
+                Total progressing to thesis
+              </TableCell>
+              {rows.map((row) => (
+                <CustomTableCell
+                  {...{
+                    row,
+                    name: "totalProgressingToThesis",
+                    totalStud: "totalNumberOfStudents",
+                    onChange,
+                  }}
+                />
+              ))}
+            </TableRow>
+          </TableBody>
+        </Table>
+      </Paper>
+    </>
   );
 }
 
