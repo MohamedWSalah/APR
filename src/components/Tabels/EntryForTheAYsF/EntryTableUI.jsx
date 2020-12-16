@@ -8,6 +8,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Input from "@material-ui/core/Input";
 import Paper from "@material-ui/core/Paper";
 import IconButton from "@material-ui/core/IconButton";
+import Divider from "@material-ui/core/Divider";
 // Icons
 import EditIcon from "@material-ui/icons/EditOutlined";
 import DoneIcon from "@material-ui/icons/DoneAllTwoTone";
@@ -93,49 +94,94 @@ const CustomTableCell = ({ row, name, onChange }) => {
   );
 };
 
+const CustomTableCellTest = ({ row, name, name2, onChange }) => {
+  const classes = useStyles();
+  const { isEditMode } = row;
+  return (
+    <TableCell align="left" className={classes.tableCell}>
+      {isEditMode ? (
+        <>
+          <Input
+            inputProps={{ min: 0, style: { textAlign: "center" } }}
+            value={row[name]}
+            name={name}
+            onChange={(e) => onChange(e, row)}
+            className={classes.input}
+          />
+          <Input
+            inputProps={{ min: 0, style: { textAlign: "center" } }}
+            value={row[name2]}
+            name={name2}
+            onChange={(e) => onChange(e, row)}
+            className={classes.input}
+          />
+        </>
+      ) : (
+        <>
+          <>{row[name]}</> <br></br> <>{row[name2]}</>
+        </>
+      )}
+    </TableCell>
+  );
+};
+
 function EditableTable() {
   const [rows, setRows] = React.useState([
-    // createData("1", 159, 6.0, 24, 4.0),
-    // createData("2", 237, 9.0, 37, 4.3),
-    // createData("3", 262, 16.0, 24, 6.0),
-    // createData("3", 262, 16.0, 24, 6.0),
-    // createData("3", 262, 16.0, 24, 6.0),
-    // createData("3", 262, 16.0, 24, 6.0),
     {
       id: 1,
       batch: "1",
-      yearOfEntry: "S2- 19/20",
+      yearOfEntry: "19/20",
+      yearOfEntry2: "19/20",
       BUE: "1",
+      BUE2: "1",
       NonBUE: "0",
+      NonBUE2: "0",
       totalNewStudentsPerSemester: 15,
+      totalNewStudentsPerSemester2: 15,
       totalStudentsPerYear: 5,
+      totalStudentsPerYear2: 5,
     },
     {
       id: 2,
       batch: "2",
-      yearOfEntry: "S2- 18/19",
+      yearOfEntry: "18/19",
+      yearOfEntry2: "18/19",
       BUE: "9",
+      BUE2: "9",
       NonBUE: "2",
+      NonBUE2: "2",
       totalNewStudentsPerSemester: 10,
+      totalNewStudentsPerSemester2: 10,
       totalStudentsPerYear: 5,
+      totalStudentsPerYear2: 5,
     },
     {
       id: 3,
       batch: "3",
-      yearOfEntry: "S2- 17/18",
+      yearOfEntry: "17/18",
+      yearOfEntry2: "17/18",
       BUE: "4",
+      BUE2: "4",
       NonBUE: "1",
+      NonBUE2: "1",
       totalNewStudentsPerSemester: 3,
+      totalNewStudentsPerSemester2: 3,
       totalStudentsPerYear: 2,
+      totalStudentsPerYear2: 2,
     },
     {
       id: 4,
       batch: "4",
-      yearOfEntry: "S2- 16/17",
+      yearOfEntry: "16/17",
+      yearOfEntry2: "16/17",
       BUE: "7",
+      BUE2: "7",
       NonBUE: "0",
+      NonBUE2: "0",
       totalNewStudentsPerSemester: 15,
+      totalNewStudentsPerSemester2: 15,
       totalStudentsPerYear: 6,
+      totalStudentsPerYear2: 6,
     },
   ]);
   const [previous, setPrevious] = React.useState({});
@@ -269,23 +315,43 @@ function EditableTable() {
                   </IconButton>
                 )}
               </TableCell>
+
               <CustomTableCell {...{ row, name: "batch", onChange }} />
-              <CustomTableCell {...{ row, name: "yearOfEntry", onChange }} />
-              <CustomTableCell {...{ row, name: "BUE", onChange }} />
-              <CustomTableCell {...{ row, name: "NonBUE", onChange }} />
-              <CustomTableCell
-                {...{ row, name: "totalNewStudentsPerSemester", onChange }}
+
+              <CustomTableCellTest
+                {...{
+                  row,
+                  name: "yearOfEntry",
+                  name2: "yearOfEntry2",
+                  onChange,
+                }}
               />
-              <CustomTableCell
-                {...{ row, name: "totalStudentsPerYear", onChange }}
+              <CustomTableCellTest
+                {...{ row, name: "BUE", name2: "BUE2", onChange }}
+              />
+              <CustomTableCellTest
+                {...{ row, name: "NonBUE", name2: "NonBUE2", onChange }}
+              />
+              <CustomTableCellTest
+                {...{
+                  row,
+                  name: "totalNewStudentsPerSemester",
+                  name2: "totalNewStudentsPerSemester2",
+                  onChange,
+                }}
+              />
+              <CustomTableCellTest
+                {...{
+                  row,
+                  name: "totalStudentsPerYear",
+                  name2: "totalStudentsPerYear2",
+                  onChange,
+                }}
               />
             </TableRow>
           ))}
         </TableBody>
       </Table>
-      {/*<Button variant="contained" onClick={() => console.log(rows)}>
-        print state (TEST ONLY)
-                </Button>*/}
     </Paper>
   );
 }

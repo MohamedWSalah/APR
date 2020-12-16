@@ -1,8 +1,6 @@
 import React from "react";
-import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
-import Button from "@material-ui/core/Button";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
@@ -141,22 +139,11 @@ export default function TemporaryDrawer() {
   };
 
   const list = (anchor) => (
-    <div>
+    <>
       <Divider />
       <List>
         {TabsInfo.map((text, index) =>
-          value === text ? (
-            <>
-              <ListItem style={{ backgroundColor: "grey" }} button key={text}>
-                <ListItemText
-                  key={text}
-                  primary={text}
-                  onClick={() => setValue(text)}
-                />
-              </ListItem>
-              <Divider />
-            </>
-          ) : text === "Program Board Decisions" ? (
+          text === "Program Board Decisions" ? (
             <>
               <ListItem button key={text} onClick={() => setOpen(!open)}>
                 <ListItemText primary={text} />
@@ -189,7 +176,11 @@ export default function TemporaryDrawer() {
             </>
           ) : (
             <>
-              <ListItem button key={text}>
+              <ListItem
+                button
+                key={text}
+                style={value === text ? { backgroundColor: "grey" } : null}
+              >
                 <ListItemText primary={text} onClick={() => setValue(text)} />
               </ListItem>
               <Divider />
@@ -197,7 +188,7 @@ export default function TemporaryDrawer() {
           )
         )}
       </List>
-    </div>
+    </>
   );
 
   return (
@@ -209,25 +200,20 @@ export default function TemporaryDrawer() {
         marginRight: "auto",
       }}
     >
-      {["left"].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <img
-            draggable
-            className={classes.leftSideMenuButton}
-            src={svgTest}
-            alt=""
-            onClick={toggleDrawer(anchor, true)}
-          />
-          <Drawer
-            key={anchor}
-            anchor={anchor}
-            open={state[anchor]}
-            onClose={toggleDrawer(anchor, false)}
-          >
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
+      <img
+        className={classes.leftSideMenuButton}
+        src={svgTest}
+        alt=""
+        onClick={toggleDrawer("left", true)}
+      />
+      <Drawer
+        anchor={"left"}
+        open={state["left"]}
+        onClose={toggleDrawer("left", false)}
+      >
+        {list("left")}
+      </Drawer>
+
       {renderTabs()}
     </div>
   );
