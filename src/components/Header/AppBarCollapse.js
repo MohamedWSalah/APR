@@ -37,13 +37,13 @@ const AppBarCollapse = (props) => (
         <Button>Home</Button>
       </MenuItem>
       <MenuItem>
-        <Button>Annual Program Report</Button>
+        <Button>Annual Program Review</Button>
       </MenuItem>
     </ButtonAppBarCollapse>
     <div className={props.classes.buttonBar} id="appbar-collapse">
       <Button className={props.classes.btnHover}>Home</Button>
       <Button className={props.classes.btnHover} color="secondary">
-        Annual Program Report
+        Annual Program Review
       </Button>
     </div>
   </div>

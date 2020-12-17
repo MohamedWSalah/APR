@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
+import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
@@ -27,12 +27,34 @@ import ExpectedToGraduate from "./Tabels/ProgramBoardDecisions/PBDTables/Expecte
 import DegreeAwarded from "./Tabels/ProgramBoardDecisions/PBDTables/DegreeAwarded";
 import CoreModulesTable from "./Tabels/ProgramBoardDecisions/PBDTables/CoreModulesTable";
 
+import clsx from "clsx";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
+import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
+import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import IconButton from "@material-ui/core/IconButton";
 
 import svgTest from "./half2.svg";
+const drawerWidth = 300;
 const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+  },
+  appBar: {
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+  },
+  appBarShift: {
+    width: `calc(100% - ${drawerWidth}px)`,
+    marginLeft: drawerWidth,
+    transition: theme.transitions.create(["margin", "width"], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  },
   list: {
     width: 250,
   },
@@ -52,18 +74,61 @@ const useStyles = makeStyles((theme) => ({
   nested: {
     paddingLeft: theme.spacing(4),
   },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  hide: {
+    display: "none",
+  },
+  drawer: {
+    width: drawerWidth,
+    flexShrink: 0,
+  },
+  drawerPaper: {
+    width: drawerWidth,
+    margin: 0,
+  },
+  drawerHeader: {
+    display: "flex",
+    alignItems: "center",
+    padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
+    ...theme.mixins.toolbar,
+    justifyContent: "flex-end",
+  },
+  content: {
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    transition: theme.transitions.create("margin", {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: -drawerWidth,
+  },
+  contentShift: {
+    transition: theme.transitions.create("margin", {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+    marginLeft: 0,
+  },
 }));
 
-export default function TemporaryDrawer() {
+export default function TemporaryDrawer(props) {
   const classes = useStyles();
+
+  const { setDrawerWidth, drawerWidth } = props;
+
   const [state, setState] = React.useState({
     left: false,
   });
-  const [open, setOpen] = React.useState(true);
 
-  const handleClick = () => {};
+  const [open, setOpen] = React.useState(false);
+
+  const [openSub, setOpenSub] = React.useState(false);
 
   const [value, setValue] = React.useState("Entry for the AYs");
+
   const TabsInfo = [
     "Entry for the AYs",
     "English Language Levels",
@@ -136,6 +201,7 @@ export default function TemporaryDrawer() {
       return;
     }
     setState({ ...state, [anchor]: open });
+    setDrawerWidth(open);
   };
 
   const list = (anchor) => (
@@ -145,12 +211,12 @@ export default function TemporaryDrawer() {
         {TabsInfo.map((text, index) =>
           text === "Program Board Decisions" ? (
             <>
-              <ListItem button key={text} onClick={() => setOpen(!open)}>
+              <ListItem button key={text} onClick={() => setOpenSub(!openSub)}>
                 <ListItemText primary={text} />
-                {open ? <ExpandLess /> : <ExpandMore />}
+                {openSub ? <ExpandLess /> : <ExpandMore />}
               </ListItem>
               <Divider />
-              <Collapse in={open} timeout="auto" unmountOnExit>
+              <Collapse in={openSub} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
                   {PBDTabs.map((text) => (
                     <>
@@ -159,7 +225,9 @@ export default function TemporaryDrawer() {
                         button
                         className={classes.nested}
                         style={
-                          value === text ? { backgroundColor: "grey" } : null
+                          value === text
+                            ? { backgroundColor: "#AF0000", color: "white" }
+                            : null
                         }
                       >
                         <ListItemText
@@ -179,7 +247,11 @@ export default function TemporaryDrawer() {
               <ListItem
                 button
                 key={text}
-                style={value === text ? { backgroundColor: "grey" } : null}
+                style={
+                  value === text
+                    ? { backgroundColor: "#AF0000", color: "white" }
+                    : null
+                }
               >
                 <ListItemText primary={text} onClick={() => setValue(text)} />
               </ListItem>
@@ -199,6 +271,9 @@ export default function TemporaryDrawer() {
         marginLeft: "auto",
         marginRight: "auto",
       }}
+      className={clsx(classes.appBar, {
+        [classes.appBarShift]: open,
+      })}
     >
       <img
         className={classes.leftSideMenuButton}
@@ -206,15 +281,25 @@ export default function TemporaryDrawer() {
         alt=""
         onClick={toggleDrawer("left", true)}
       />
+
       <Drawer
         anchor={"left"}
+        variant="persistent"
         open={state["left"]}
         onClose={toggleDrawer("left", false)}
+        classes={{
+          paper: classes.drawerPaper,
+        }}
       >
+        <div className={classes.drawerHeader}>
+          <IconButton onClick={toggleDrawer("left", open)}>
+            <ChevronLeftIcon />
+          </IconButton>
+        </div>
         {list("left")}
       </Drawer>
-
-      {renderTabs()}
+      <div className={classes.drawerHeader} />
+      <div style={state.left ? { marginLeft: 280 } : null}>{renderTabs()}</div>
     </div>
   );
 }

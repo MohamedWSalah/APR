@@ -48,9 +48,10 @@ const styles = {
 };
 
 function ButtonAppBar(props) {
-  const { classes } = props;
+  const { classes, drawerWidth } = props;
+
   return (
-    <>
+    <div style={drawerWidth ? { marginLeft: 300 } : null}>
       <AppBar position="fixed" className={classes.navigation}>
         <Toolbar>
           <img src={BUEHeaderLogo} alt="" style={{ height: 50, width: 130 }} />
@@ -62,11 +63,11 @@ function ButtonAppBar(props) {
         <div className={classes.layer}>
           <p style={{ textAlign: "center", color: "white" }}>**Logged User**</p>
           <p style={{ textAlign: "center", color: "white", fontSize: "23px" }}>
-            Annual Program Report
+            Annual Program Review
           </p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
