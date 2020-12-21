@@ -49,7 +49,7 @@ const styles = {
 
 function ButtonAppBar(props) {
   const { classes, drawerWidth } = props;
-
+  const name = sessionStorage.getItem("name");
   return (
     <div style={drawerWidth ? { marginLeft: 300 } : null}>
       <AppBar position="fixed" className={classes.navigation}>
@@ -59,14 +59,22 @@ function ButtonAppBar(props) {
           <AppBarCollapse />
         </Toolbar>
       </AppBar>
-      <div className={classes.HeaderImg}>
-        <div className={classes.layer}>
-          <p style={{ textAlign: "center", color: "white" }}>**Logged User**</p>
-          <p style={{ textAlign: "center", color: "white", fontSize: "23px" }}>
-            Annual Program Review
-          </p>
+      {name ? (
+        <div className={classes.HeaderImg}>
+          <div className={classes.layer}>
+            <p
+              style={{ textAlign: "center", color: "white", fontSize: "20px" }}
+            >
+              Welcome, {name}
+            </p>
+            <p
+              style={{ textAlign: "center", color: "white", fontSize: "20px" }}
+            >
+              Annual Program Review
+            </p>
+          </div>
         </div>
-      </div>
+      ) : null}
     </div>
   );
 }

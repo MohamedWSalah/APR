@@ -107,7 +107,7 @@ function Body(props) {
         </div>
       </div>
 
-      {show === false ? (
+      {show === true ? (
         <TemporaryDrawer
           setDrawerWidth={setDrawerWidth}
           drawerWidth={drawerWidth}

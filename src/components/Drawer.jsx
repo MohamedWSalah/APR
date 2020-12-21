@@ -32,10 +32,10 @@ import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 import Collapse from "@material-ui/core/Collapse";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
-import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import IconButton from "@material-ui/core/IconButton";
 
 import svgTest from "./half2.svg";
+
 const drawerWidth = 300;
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -229,12 +229,9 @@ export default function TemporaryDrawer(props) {
                             ? { backgroundColor: "#AF0000", color: "white" }
                             : null
                         }
+                        onClick={() => setValue(text)}
                       >
-                        <ListItemText
-                          primary={text}
-                          key={text}
-                          onClick={() => setValue(text)}
-                        />
+                        <ListItemText primary={text} key={text} />
                       </ListItem>
                       <Divider />
                     </>
@@ -247,13 +244,14 @@ export default function TemporaryDrawer(props) {
               <ListItem
                 button
                 key={text}
+                onClick={() => setValue(text)}
                 style={
                   value === text
                     ? { backgroundColor: "#AF0000", color: "white" }
                     : null
                 }
               >
-                <ListItemText primary={text} onClick={() => setValue(text)} />
+                <ListItemText primary={text} />
               </ListItem>
               <Divider />
             </>

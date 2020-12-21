@@ -4,14 +4,34 @@ import Footer from "./components/Footer";
 import "./App.css";
 import Body from "./components/Body";
 import { useState } from "react";
+import { Router, Route, Switch, Redirect } from "react-router";
+import { BrowserRouter, Link } from "react-router-dom";
+import Login from "./components/Login/Login";
 
 function App() {
   //Dont do this :)
   const [drawerWidth, setDrawerWidth] = useState(false);
+
   return (
     <div className="App">
       <HeaderTest drawerWidth={drawerWidth} />
-      <Body drawerWidth={drawerWidth} setDrawerWidth={setDrawerWidth} />
+
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            {sessionStorage.getItem("name") ? (
+              <Body drawerWidth={drawerWidth} setDrawerWidth={setDrawerWidth} />
+            ) : (
+              <Redirect to="/login" />
+            )}
+          </Route>
+
+          <Route exact path="/login">
+            {sessionStorage.getItem("name") ? <Redirect to="/" /> : <Login />}
+          </Route>
+        </Switch>
+      </BrowserRouter>
+
       <Footer />
     </div>
   );
