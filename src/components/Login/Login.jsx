@@ -14,10 +14,11 @@ import {
 } from "@material-ui/core";
 import { Mail, Lock } from "@material-ui/icons";
 import BUEHeaderLogo from "../../Assets/BUEIcon.png";
+import { Router, Route, Switch, Redirect } from "react-router";
 
 const styles = (theme) => ({
   card: {
-    minWidth: 275,
+    minWidth: 260,
   },
   extendedIcon: {
     marginRight: "3px",
@@ -26,7 +27,7 @@ const styles = (theme) => ({
     flexDirection: "row-reverse",
   },
   Paper: {
-    maxWidth: "50%",
+    maxWidth: "40%",
   },
 });
 
@@ -63,6 +64,7 @@ export default withStyles(styles)(
     handleClick = () => {
       const { username, password } = this.state;
       sessionStorage.setItem("name", username);
+      window.location.href = "/";
     };
 
     validateEmail = () => {
@@ -122,13 +124,14 @@ export default withStyles(styles)(
                   </CardContent>
                   <CardActions className={classes.action}>
                     <Button
-                      id="btn_login"
-                      onClick={(e) => this.handleClick()}
+                      type="submit"
+                      onKeyPress={(e) =>
+                        e.key === "Enter" ? this.handleClick() : null
+                      }
                       disabled={!this.handleValidation()}
                       color="primary"
                       style={{ width: "100%" }}
                       variant="contained"
-                      href="/"
                     >
                       Login
                     </Button>

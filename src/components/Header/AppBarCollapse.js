@@ -45,6 +45,11 @@ const AppBarCollapse = (props) => (
       <Button className={props.classes.btnHover} color="secondary">
         Annual Program Review
       </Button>
+      {sessionStorage.getItem("name") ? null : (
+        <Button className={props.classes.btnHover} href="/">
+          Login
+        </Button>
+      )}
     </div>
   </div>
 );

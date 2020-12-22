@@ -7,7 +7,7 @@ import { useState } from "react";
 import { Router, Route, Switch, Redirect } from "react-router";
 import { BrowserRouter, Link } from "react-router-dom";
 import Login from "./components/Login/Login";
-
+import NotFound from "./components/NotFound";
 function App() {
   //Dont do this :)
   const [drawerWidth, setDrawerWidth] = useState(false);
@@ -29,6 +29,8 @@ function App() {
           <Route exact path="/login">
             {sessionStorage.getItem("name") ? <Redirect to="/" /> : <Login />}
           </Route>
+
+          <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
 
