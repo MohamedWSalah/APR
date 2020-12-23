@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, setState } from "react";
 import { Button, MenuItem } from "@material-ui/core";
 
 import { withStyles } from "@material-ui/core/styles";
@@ -41,7 +41,12 @@ const AppBarCollapse = (props) => (
       </MenuItem>
     </ButtonAppBarCollapse>
     <div className={props.classes.buttonBar} id="appbar-collapse">
-      <Button className={props.classes.btnHover}>Home</Button>
+      <Button
+        className={props.classes.btnHover}
+        onClick={() => props.setIsActive("Home")}
+      >
+        Home
+      </Button>
       <Button className={props.classes.btnHover} color="secondary">
         Annual Program Review
       </Button>

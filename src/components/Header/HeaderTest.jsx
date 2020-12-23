@@ -21,7 +21,7 @@ const styles = {
   },
   HeaderImg: {
     borderTop: "1px solid black",
-    height: "100px",
+    height: "120px",
     marginTop: "0",
     width: "100%",
     backgroundImage: "url(" + headerLogo + ")",
@@ -50,13 +50,14 @@ const styles = {
 function ButtonAppBar(props) {
   const { classes, drawerWidth } = props;
   const name = sessionStorage.getItem("name");
+  const [isActive, setIsActive] = React.useState();
   return (
     <div style={drawerWidth ? { marginLeft: 300 } : null}>
       <AppBar position="fixed" className={classes.navigation}>
         <Toolbar>
           <img src={BUEHeaderLogo} alt="" style={{ height: 50, width: 130 }} />
 
-          <AppBarCollapse />
+          <AppBarCollapse isActive={isActive} setIsActive={setIsActive} />
         </Toolbar>
       </AppBar>
       {name ? (
