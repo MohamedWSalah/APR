@@ -18,7 +18,7 @@ function App() {
 
       <HashRouter>
         <Switch>
-          <Route exact path="/">
+          <Route exact path="/APR">
             {sessionStorage.getItem("name") ? (
               <Body drawerWidth={drawerWidth} setDrawerWidth={setDrawerWidth} />
             ) : (
