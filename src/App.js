@@ -5,7 +5,7 @@ import "./App.css";
 import Body from "./components/Body";
 import { useState } from "react";
 import { Router, Route, Switch, Redirect } from "react-router";
-import { BrowserRouter, Link } from "react-router-dom";
+import { BrowserRouter, HashRouter, Link } from "react-router-dom";
 import Login from "./components/Login/Login";
 import NotFound from "./components/NotFound";
 function App() {
@@ -16,7 +16,7 @@ function App() {
     <div className="App">
       <HeaderTest drawerWidth={drawerWidth} />
 
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route exact path="/">
             {sessionStorage.getItem("name") ? (
@@ -32,7 +32,7 @@ function App() {
 
           <Route component={NotFound} />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
 
       <Footer />
     </div>

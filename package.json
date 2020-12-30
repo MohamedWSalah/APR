@@ -2,7 +2,7 @@
   "name": "apr",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://mohamedwsalah.github.io/APR",
+  "homepage": "http://MohamedWSalah.github.io/APR/login",
   "dependencies": {
     "@material-ui/core": "^4.11.2",
     "@material-ui/icons": "^4.11.2",
