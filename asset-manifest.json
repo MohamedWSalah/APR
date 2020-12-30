@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/APR/static/css/main.680035bc.chunk.css",
+    "main.js": "/APR/static/js/main.0b8bf124.chunk.js",
+    "main.js.map": "/APR/static/js/main.0b8bf124.chunk.js.map",
+    "runtime-main.js": "/APR/static/js/runtime-main.57209f33.js",
+    "runtime-main.js.map": "/APR/static/js/runtime-main.57209f33.js.map",
+    "static/js/2.6f770fc3.chunk.js": "/APR/static/js/2.6f770fc3.chunk.js",
+    "static/js/2.6f770fc3.chunk.js.map": "/APR/static/js/2.6f770fc3.chunk.js.map",
+    "static/js/3.fa979bc6.chunk.js": "/APR/static/js/3.fa979bc6.chunk.js",
+    "static/js/3.fa979bc6.chunk.js.map": "/APR/static/js/3.fa979bc6.chunk.js.map",
+    "index.html": "/APR/index.html",
+    "static/css/main.680035bc.chunk.css.map": "/APR/static/css/main.680035bc.chunk.css.map",
+    "static/js/2.6f770fc3.chunk.js.LICENSE.txt": "/APR/static/js/2.6f770fc3.chunk.js.LICENSE.txt",
+    "static/media/BUE-logo.f0616b9d.png": "/APR/static/media/BUE-logo.f0616b9d.png",
+    "static/media/facebook.4f037d96.png": "/APR/static/media/facebook.4f037d96.png",
+    "static/media/footer.2b375ae5.png": "/APR/static/media/footer.2b375ae5.png",
+    "static/media/half2.9036e4c6.svg": "/APR/static/media/half2.9036e4c6.svg",
+    "static/media/instagram.75e0546a.png": "/APR/static/media/instagram.75e0546a.png",
+    "static/media/signing3.1898a394.jpg": "/APR/static/media/signing3.1898a394.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.57209f33.js",
+    "static/js/2.6f770fc3.chunk.js",
+    "static/css/main.680035bc.chunk.css",
+    "static/js/main.0b8bf124.chunk.js"
+  ]
+}
