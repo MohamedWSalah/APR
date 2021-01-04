@@ -16,9 +16,9 @@ function App() {
     <div className="App">
       <HeaderTest drawerWidth={drawerWidth} />
 
-      <HashRouter>
+      <BrowserRouter>
         <Switch>
-          <Route exact path="/APR">
+          <Route exact path="/">
             {sessionStorage.getItem("name") ? (
               <Body drawerWidth={drawerWidth} setDrawerWidth={setDrawerWidth} />
             ) : (
@@ -32,7 +32,7 @@ function App() {
 
           <Route component={NotFound} />
         </Switch>
-      </HashRouter>
+      </BrowserRouter>
 
       <Footer />
     </div>
