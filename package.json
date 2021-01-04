@@ -2,7 +2,6 @@
   "name": "apr",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://MohamedWSalah.github.io/APR",
   "engines": {
     "npm": "6.14.8",
     "node": "12.19.0"
