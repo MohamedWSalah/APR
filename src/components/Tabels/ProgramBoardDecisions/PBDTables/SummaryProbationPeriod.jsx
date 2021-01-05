@@ -124,16 +124,16 @@ function EditableTable() {
   const [previous, setPrevious] = React.useState({});
   const classes = useStyles();
 
-  const onToggleEditMode = (id) => {
-    setRows((state) => {
-      return rows.map((row) => {
-        if (row.id === id) {
-          return { ...row, isEditMode: !row.isEditMode };
-        }
-        return row;
-      });
-    });
-  };
+  // const onToggleEditMode = (id) => {
+  //   setRows((state) => {
+  //     return rows.map((row) => {
+  //       if (row.id === id) {
+  //         return { ...row, isEditMode: !row.isEditMode };
+  //       }
+  //       return row;
+  //     });
+  //   });
+  // };
 
   const onChange = (e, row) => {
     if (!previous[row.id]) {
@@ -151,20 +151,20 @@ function EditableTable() {
     setRows(newRows);
   };
 
-  const onRevert = (id) => {
-    const newRows = rows.map((row) => {
-      if (row.id === id) {
-        return previous[id] ? previous[id] : row;
-      }
-      return row;
-    });
-    setRows(newRows);
-    setPrevious((state) => {
-      delete state[id];
-      return state;
-    });
-    onToggleEditMode(id);
-  };
+  // const onRevert = (id) => {
+  //   const newRows = rows.map((row) => {
+  //     if (row.id === id) {
+  //       return previous[id] ? previous[id] : row;
+  //     }
+  //     return row;
+  //   });
+  //   setRows(newRows);
+  //   setPrevious((state) => {
+  //     delete state[id];
+  //     return state;
+  //   });
+  //   onToggleEditMode(id);
+  // };
 
   return (
     <>

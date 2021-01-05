@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import DropDownMenu from "./DropDownMenu";
-import Tabs from "./Tabs";
+
 import TemporaryDrawer from "./Drawer";
 
 const useStyles = makeStyles((theme) => ({

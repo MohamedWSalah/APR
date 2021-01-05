@@ -29,12 +29,12 @@ function Footer() {
           position: "relative",
           marginTop: "18%",
           clear: "both",
-          position: "relative",
         }}
       >
         <div style={{ textAlign: "center", position: "relative" }}>
           <img
             src={footerLogo}
+            alt=""
             style={{
               height: 80,
               paddingTop: "1vw",
@@ -46,9 +46,11 @@ function Footer() {
           <a
             href="https://www.facebook.com/BUESoftwareProductionUnit"
             target="_blank"
+            rel="noreferrer"
           >
             <img
               src={facebookLogo}
+              alt=""
               style={{
                 height: 40,
                 paddingBottom: "20px",
@@ -59,9 +61,11 @@ function Footer() {
           <a
             href="https://www.linkedin.com/company/bue-software-production-unit/"
             target="_blank"
+            rel="noreferrer"
           >
             <img
               src={linkedinLogo}
+              alt=""
               style={{
                 height: 40,
                 paddingBottom: "20px",
@@ -72,6 +76,7 @@ function Footer() {
 
           <img
             src={instaLogo}
+            alt=""
             style={{
               height: 40,
               paddingBottom: "20px",

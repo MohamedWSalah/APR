@@ -4,8 +4,8 @@ import Footer from "./components/Footer";
 import "./App.css";
 import Body from "./components/Body";
 import { useState } from "react";
-import { Router, Route, Switch, Redirect } from "react-router";
-import { BrowserRouter, HashRouter, Link } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router";
+import { HashRouter } from "react-router-dom";
 import Login from "./components/Login/Login";
 import NotFound from "./components/NotFound";
 function App() {

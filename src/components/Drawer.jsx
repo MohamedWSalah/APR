@@ -1,5 +1,5 @@
 import React from "react";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
@@ -117,13 +117,13 @@ const useStyles = makeStyles((theme) => ({
 export default function TemporaryDrawer(props) {
   const classes = useStyles();
 
-  const { setDrawerWidth, drawerWidth } = props;
+  const { setDrawerWidth } = props;
 
   const [state, setState] = React.useState({
     left: false,
   });
 
-  const [open, setOpen] = React.useState(false);
+  const [open] = React.useState(false);
 
   const [openSub, setOpenSub] = React.useState(false);
 

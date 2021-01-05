@@ -8,13 +8,10 @@ import {
   TextField,
   CardHeader,
   Avatar,
-  InputAdornment,
   Paper,
   Grid,
 } from "@material-ui/core";
-import { Mail, Lock } from "@material-ui/icons";
 import BUEHeaderLogo from "../../Assets/BUEIcon.png";
-import { Router, Route, Switch, Redirect } from "react-router";
 
 const styles = (theme) => ({
   card: {
@@ -64,6 +61,7 @@ export default withStyles(styles)(
     handleClick = () => {
       const { username, password } = this.state;
       sessionStorage.setItem("name", username);
+      sessionStorage.setItem("password", password);
       window.location.href = "/APR";
     };
 
