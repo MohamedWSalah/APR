@@ -139,7 +139,6 @@ function EditableTable() {
       totalNewStudentsPerSemester: 15,
       totalNewStudentsPerSemester2: 15,
       totalStudentsPerYear: 5,
-      totalStudentsPerYear2: 5,
     },
     {
       id: 2,
@@ -153,7 +152,6 @@ function EditableTable() {
       totalNewStudentsPerSemester: 10,
       totalNewStudentsPerSemester2: 10,
       totalStudentsPerYear: 5,
-      totalStudentsPerYear2: 5,
     },
     {
       id: 3,
@@ -167,7 +165,6 @@ function EditableTable() {
       totalNewStudentsPerSemester: 3,
       totalNewStudentsPerSemester2: 3,
       totalStudentsPerYear: 2,
-      totalStudentsPerYear2: 2,
     },
     {
       id: 4,
@@ -181,7 +178,6 @@ function EditableTable() {
       totalNewStudentsPerSemester: 15,
       totalNewStudentsPerSemester2: 15,
       totalStudentsPerYear: 6,
-      totalStudentsPerYear2: 6,
     },
   ]);
   const [previous, setPrevious] = React.useState({});
@@ -344,7 +340,6 @@ function EditableTable() {
                 {...{
                   row,
                   name: "totalStudentsPerYear",
-                  name2: "totalStudentsPerYear2",
                   onChange,
                 }}
               />

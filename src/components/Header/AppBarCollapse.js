@@ -32,14 +32,16 @@ const styles = (theme) => ({
 
 const AppBarCollapse = (props) => (
   <div className={props.classes.root}>
-    <ButtonAppBarCollapse>
-      <MenuItem>
-        <Button>Home</Button>
-      </MenuItem>
-      <MenuItem>
-        <Button>Annual Program Review</Button>
-      </MenuItem>
-    </ButtonAppBarCollapse>
+    <div style={{ position: "absolute", right: 0, top: 0 }}>
+      <ButtonAppBarCollapse>
+        <MenuItem>
+          <Button>Home</Button>
+        </MenuItem>
+        <MenuItem>
+          <Button>Annual Program Review</Button>
+        </MenuItem>
+      </ButtonAppBarCollapse>
+    </div>
     <div className={props.classes.buttonBar} id="appbar-collapse">
       <Button
         className={props.classes.btnHover}
@@ -50,11 +52,11 @@ const AppBarCollapse = (props) => (
       <Button className={props.classes.btnHover} color="secondary">
         Annual Program Review
       </Button>
-      {sessionStorage.getItem("name") ? null : (
+      {/*{sessionStorage.getItem("name") ? null : (
         <Button className={props.classes.btnHover} href="/">
           Login
         </Button>
-      )}
+      )}*/}
     </div>
   </div>
 );
