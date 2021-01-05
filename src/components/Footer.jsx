@@ -27,7 +27,9 @@ function Footer() {
           backgroundColor: "#323336",
           height: "230px",
           position: "relative",
-          marginTop: "10%",
+          marginTop: "18%",
+          clear: "both",
+          position: "relative",
         }}
       >
         <div style={{ textAlign: "center", position: "relative" }}>

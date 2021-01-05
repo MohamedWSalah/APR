@@ -64,7 +64,7 @@ export default withStyles(styles)(
     handleClick = () => {
       const { username, password } = this.state;
       sessionStorage.setItem("name", username);
-      window.location.href = "/";
+      window.location.href = "/APR";
     };
 
     validateEmail = () => {
@@ -132,6 +132,7 @@ export default withStyles(styles)(
                       color="primary"
                       style={{ width: "100%" }}
                       variant="contained"
+                      onClick={() => this.handleClick()}
                     >
                       Login
                     </Button>
