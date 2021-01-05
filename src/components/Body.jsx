@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Button } from "@material-ui/core";
 import DropDownMenu from "./DropDownMenu";
-
 import TemporaryDrawer from "./Drawer";
+
+import { Grid } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiTextField-root": {
       margin: theme.spacing(2),
-      width: "25ch",
     },
   },
   ShowButton: {
@@ -47,54 +47,72 @@ function Body(props) {
   return (
     <div className={classes.root} style={{ marginTop: "1vw" }}>
       <div style={drawerWidth ? { marginLeft: 280 } : null}>
-        <DropDownMenu
-          autofocus={true}
-          label="Faculty"
-          value={requiredInfo.faculty}
-          arrayMenu={faculties}
-          onChange={(event) =>
-            setRequiredInfo({ ...requiredInfo, faculty: event.target.value })
-          }
-        />
-
-        <DropDownMenu
-          label="Program Title"
-          value={requiredInfo.programTitle}
-          arrayMenu={programTitles}
-          disabled={requiredInfo.faculty ? false : true}
-          onChange={(event) =>
-            setRequiredInfo({
-              ...requiredInfo,
-              programTitle: event.target.value,
-            })
-          }
-        />
-
-        <DropDownMenu
-          label="Academic Year Start"
-          value={requiredInfo.AYStart}
-          arrayMenu={year}
-          disabled={requiredInfo.faculty ? false : true}
-          onChange={(event) =>
-            setRequiredInfo({
-              ...requiredInfo,
-              AYStart: event.target.value,
-            })
-          }
-        />
-
-        <DropDownMenu
-          label="Academic Year End"
-          value={requiredInfo.AYEnd}
-          arrayMenu={year}
-          disabled={requiredInfo.AYStart ? false : true}
-          onChange={(event) =>
-            setRequiredInfo({
-              ...requiredInfo,
-              AYEnd: event.target.value,
-            })
-          }
-        />
+        <Grid container style={{ flexGrow: 1 }} justify="center" spacing={2}>
+          <Grid item s={4}>
+            <Grid container justify="center" spacing={2}>
+              <DropDownMenu
+                autofocus={true}
+                label="Faculty"
+                value={requiredInfo.faculty}
+                arrayMenu={faculties}
+                onChange={(event) =>
+                  setRequiredInfo({
+                    ...requiredInfo,
+                    faculty: event.target.value,
+                  })
+                }
+              />
+            </Grid>
+          </Grid>
+          <Grid item s={4}>
+            <Grid container justify="center" spacing={2}>
+              <DropDownMenu
+                label="Program Title"
+                value={requiredInfo.programTitle}
+                arrayMenu={programTitles}
+                disabled={requiredInfo.faculty ? false : true}
+                onChange={(event) =>
+                  setRequiredInfo({
+                    ...requiredInfo,
+                    programTitle: event.target.value,
+                  })
+                }
+              />
+            </Grid>
+          </Grid>
+          <Grid item s={4}>
+            <Grid container justify="center" spacing={2}>
+              <DropDownMenu
+                label="Academic Year Start"
+                value={requiredInfo.AYStart}
+                arrayMenu={year}
+                disabled={requiredInfo.faculty ? false : true}
+                onChange={(event) =>
+                  setRequiredInfo({
+                    ...requiredInfo,
+                    AYStart: event.target.value,
+                  })
+                }
+              />
+            </Grid>
+          </Grid>
+          <Grid item s={4}>
+            <Grid container justify="center" spacing={2}>
+              <DropDownMenu
+                label="Academic Year End"
+                value={requiredInfo.AYEnd}
+                arrayMenu={year}
+                disabled={requiredInfo.AYStart ? false : true}
+                onChange={(event) =>
+                  setRequiredInfo({
+                    ...requiredInfo,
+                    AYEnd: event.target.value,
+                  })
+                }
+              />
+            </Grid>
+          </Grid>
+        </Grid>
         <div>
           <Button
             variant="contained"

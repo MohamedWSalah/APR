@@ -93,7 +93,7 @@ const CustomTableCell = ({ row, name, onChange }) => {
   );
 };
 
-const CustomTableCellTest = ({ row, name, name2, onChange }) => {
+const CustomTableCellTwoRows = ({ row, name, name2, onChange }) => {
   const classes = useStyles();
   const { isEditMode } = row;
   return (
@@ -216,6 +216,7 @@ function EditableTable() {
       }
       return row;
     });
+
     setRows(newRows);
     setPrevious((state) => {
       delete state[id];
@@ -313,7 +314,7 @@ function EditableTable() {
 
               <CustomTableCell {...{ row, name: "batch", onChange }} />
 
-              <CustomTableCellTest
+              <CustomTableCellTwoRows
                 {...{
                   row,
                   name: "yearOfEntry",
@@ -321,13 +322,13 @@ function EditableTable() {
                   onChange,
                 }}
               />
-              <CustomTableCellTest
+              <CustomTableCellTwoRows
                 {...{ row, name: "BUE", name2: "BUE2", onChange }}
               />
-              <CustomTableCellTest
+              <CustomTableCellTwoRows
                 {...{ row, name: "NonBUE", name2: "NonBUE2", onChange }}
               />
-              <CustomTableCellTest
+              <CustomTableCellTwoRows
                 {...{
                   row,
                   name: "totalNewStudentsPerSemester",
@@ -335,7 +336,7 @@ function EditableTable() {
                   onChange,
                 }}
               />
-              <CustomTableCellTest
+              <CustomTableCell
                 {...{
                   row,
                   name: "totalStudentsPerYear",
