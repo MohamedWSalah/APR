@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/APR/static/css/main.680035bc.chunk.css",
+    "main.css": "/APR/static/css/main.d41c6cda.chunk.css",
     "main.js": "/APR/static/js/main.ab830ad1.chunk.js",
     "main.js.map": "/APR/static/js/main.ab830ad1.chunk.js.map",
     "runtime-main.js": "/APR/static/js/runtime-main.9adb3334.js",
@@ -10,7 +10,7 @@
     "static/js/3.4411b1d7.chunk.js": "/APR/static/js/3.4411b1d7.chunk.js",
     "static/js/3.4411b1d7.chunk.js.map": "/APR/static/js/3.4411b1d7.chunk.js.map",
     "index.html": "/APR/index.html",
-    "static/css/main.680035bc.chunk.css.map": "/APR/static/css/main.680035bc.chunk.css.map",
+    "static/css/main.d41c6cda.chunk.css.map": "/APR/static/css/main.d41c6cda.chunk.css.map",
     "static/js/2.3bf2df3d.chunk.js.LICENSE.txt": "/APR/static/js/2.3bf2df3d.chunk.js.LICENSE.txt",
     "static/media/BUE-logo.f0616b9d.png": "/APR/static/media/BUE-logo.f0616b9d.png",
     "static/media/facebook.4f037d96.png": "/APR/static/media/facebook.4f037d96.png",
@@ -22,7 +22,7 @@
   "entrypoints": [
     "static/js/runtime-main.9adb3334.js",
     "static/js/2.3bf2df3d.chunk.js",
-    "static/css/main.680035bc.chunk.css",
+    "static/css/main.d41c6cda.chunk.css",
     "static/js/main.ab830ad1.chunk.js"
   ]
 }
